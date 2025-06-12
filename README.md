@@ -1,223 +1,262 @@
-# King Translator AI - Versatile AI-Powered Translation Tool
+<p align="right">
+  <b>English</b> | <a href="README_vi.md">Tiếng Việt</a>
+</p>
 
-![Version](https://img.shields.io/badge/version-4.4-blue)
-![Status](https://img.shields.io/badge/status-updated-green)
-![License](https://img.shields.io/badge/license-GPL3-orange)
+# King Translator AI - The All-in-One AI Translation Tool 🔥
+
+![Version](https://img.shields.io/badge/version-5.0-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-active-green?style=for-the-badge)
+![License](https://img.shields.io/badge/license-GPL--3.0-orange?style=for-the-badge)
+[![Discord](https://img.shields.io/discord/1206126615848554526?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/8DTwr8QpsM)
 
 <div align="center">
-  <img src="kings.jpg" alt="Translator AI Logo" width="200"/>
+  <img src="https://raw.githubusercontent.com/king1x32/King-Translator-AI/refs/heads/main/icon/kings.jpg" alt="King Translator AI Logo" width="200"/>
   <br>
-  <i>Intelligent AI-powered translation tool (Google Gemini) for browsers</i>
-  <h3>If you like this userscript, please give this repository a star!✨</h3>
+  <i>Translate everything with the power of 6 leading AI providers, right in your browser!</i>
+  <h3>If you like this userscript, please give this repository a star! ✨</h3>
 </div>
 
 ## 📖 Table of Contents
+- [What's New in Version 5.0?](#-whats-new-in-version-50)
 - [Introduction](#-introduction)
+- [Core Features](#-core-features)
 - [Screenshots](#-screenshots)
-- [Features](#-features)
 - [Installation Guide](#-installation-guide)
-- [Usage Instructions](#-usage-instructions)
-- [Configuration](#-configuration)
-- [Shortcuts](#-shortcuts)
-- [Notes](#-notes)
-- [Contributions](#-contributions)
+- [Usage Guide](#-usage-guide)
+- [Hotkeys & Gestures](#-hotkeys--gestures)
+- [Support & Contribution](#-support--contribution)
 - [License](#-license)
-- [Download](#-download)
-- [Hướng dẫn tiếng Việt](README_vi.md)
+- [Vietnamese Guide](README_vi.md)
+
+## 🚀 What's New in Version 5.0?
+
+Version 5.0 is a major update focused on expanding capabilities, optimizing performance, and enhancing user experience:
+
+- 🧠 **Multi-AI Provider Support:** Integrates 6 leading AI providers: **Gemini, Claude, Perplexity, OpenAI, Mistral, and Puter**.
+  - **Gemini:** Full support for all features, including large file translation.
+  - **Claude, Perplexity, OpenAI, Mistral:** All features supported except file translation.
+  - **Puter:** Text-related features and YouTube live-caption translation.
+- 🗣️ **Versatile Text-to-Speech (TTS):** Adds 5 new TTS sources (Gemini, OpenAI, Google Cloud, Google Translate) alongside device TTS, with customizable voice, speed, and pitch.
+- 🚀 **API & Performance Optimization:** Improved API key management to minimize rate-limiting, resulting in faster and more stable page translations.
+- 🎨 **Enhanced Manga Web Translation:** More accurate translation placement, with support for moving and resizing translated text bubbles.
+- 🖼️ **Upgraded OCR:** The "OCR Region" feature has been revamped into a more powerful and convenient "Capture and Translate Screen Region" tool.
+- 🔒 **Enhanced Security:** Settings backup files are now encrypted to protect your API keys.
+- ✍️ **Improved Input Translation:** The translation tool for input fields can now be moved and its position saved per website.
+- ⚙️ **UI & Experience:**
+  - A redesigned, more attractive translation popup with a convenient copy button.
+  - A global toggle switch to enable or disable all translation tools at once.
+- 📂 **Large File Support:** Translate local files up to 2GB (supported via Gemini API).
+- ✅ **Bug Fixes & Stability:** Resolves issues reported in previous versions.
 
 ## 🌟 Introduction
-- Translator AI is an innovative AI-integrated translation userscript that allows users to effortlessly translate text, images, media, and web pages directly in their browser. It utilizes the Google Gemini API to deliver high-quality translation results.
-- This tool supports a variety of functions, including text translation, image translation, audio and video translation, and notably, manga translation with overlay text, enabling users to conveniently experience content in their desired language.
+**King Translator AI** is a powerful userscript that transforms your browser into an all-encompassing translation powerhouse. By integrating the most advanced AI models, the script allows you to break down any language barrier, from simple text translation to complex video analysis, all with just a few clicks.
+
+## ✨ Core Features
+
+<details>
+<summary><b>🧠 Multi-AI Provider Translation</b></summary>
+
+- Flexibly choose from 6 leading AI providers: **Google Gemini, Anthropic Claude, Perplexity, OpenAI, Mistral, and Puter**.
+- Leverage the strengths of each model for different translation tasks.
+- Smart API key management with automatic rotation to optimize performance and avoid rate-limits.
+</details>
+
+<details>
+<summary><b>📝 Intelligent Text Translation</b></summary>
+
+- **Quick Translation:** Instantly translate selected text.
+- **Popup Translation:** A modern popup interface displaying the original text, phonetic transcription (IPA/Pinyin), and translation.
+- **Advanced Translation:** Deeper vocabulary and context analysis.
+- **Input Field Translation:** Automatically translate text within input fields and textareas as you type.
+- **Full Page Translation:** Translate entire web pages with the option to exclude specific elements.
+- **YouTube Live-Caption Translation:** Real-time translation of YouTube video subtitles, with bilingual display support.
+</details>
+
+<details>
+<summary><b>🖼️ Image (OCR) & Manga Translation</b></summary>
+
+- **Capture and Translate Screen Region:** Drag your mouse to select and translate any content on your screen.
+- **Web Image Translation:** Click on any image on a webpage to translate its embedded text.
+- **Image File Translation:** Upload an image file from your computer to translate it.
+- **Specialized Manga Translation:** Automatically detects and translates speech bubbles in comics, allowing you to move and resize the translated text overlays.
+</details>
+
+<details>
+<summary><b>🎵 Media & File Translation (Up to 2GB)</b></summary>
+
+- **Audio/Video File Translation:** Upload media files (MP3, MP4, WAV, WEBM...) to get transcripts and translations.
+- **Large File Support (Gemini API):** Translate documents and media files up to 2GB.
+- **Direct URL Translation (Gemini/Puter):** Paste a file link to translate without downloading.
+- **Document Translation:** Supports PDF, HTML, SRT, VTT, JSON, MD, and more.
+</details>
+
+<details>
+<summary><b>⚙️ Comprehensive Customization</b></summary>
+
+- **Custom Prompts:** Full control to modify the prompts sent to the AI for each translation task.
+- **Interface:** Light/Dark mode, customizable font size, and popup width.
+- **Display Modes:** Choose between "Translation Only," "Parallel (Bilingual)," and "Language Learning" (Original + Phonetics + Translation).
+- **Hotkeys & Gestures:** Set up custom keyboard shortcuts and touch gestures for mobile devices.
+- **Cache Management:** Enable/disable and customize caching to speed up subsequent translations.
+- **Backup & Restore:** Easily export/import all your settings with an encrypted file.
+</details>
 
 ## 📸 Screenshots
 
-### 📱 Mobile
 <details>
-<summary>Click to view</summary>
-
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-  <img src="https://i.imgur.com/7pi9USr.jpeg" width="45%" />
-  <img src="https://i.imgur.com/3ksRC8R.jpeg" width="45%" />
-  <img src="https://i.imgur.com/Wu5jXLv.jpeg" width="45%" />
-  <img src="https://i.imgur.com/Bcy8QIu.jpeg" width="45%" />
-  <img src="https://i.imgur.com/AcXGewv.jpeg" width="45%" />
-  <img src="https://i.imgur.com/KQtCnnk.jpeg" width="45%" />
-  <img src="https://i.imgur.com/vmA7OW7.jpeg" width="45%" />
-  <img src="https://i.imgur.com/lWDs7Iu.jpeg" width="45%" />
+<summary><b>📱 Mobile Interface</b></summary>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <img src="https://i.imgur.com/7pi9USr.jpeg" width="45%" alt="Mobile 1" />
+  <img src="https://i.imgur.com/3ksRC8R.jpeg" width="45%" alt="Mobile 2" />
+  <img src="https://i.imgur.com/Wu5jXLv.jpeg" width="45%" alt="Mobile 3" />
+  <img src="https://i.imgur.com/Bcy8QIu.jpeg" width="45%" alt="Mobile 4" />
 </div>
-
 </details>
 
-### 💻 PC
 <details>
-<summary>Click to view</summary>
-
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-  <img src="https://i.imgur.com/tZ5NqOG.jpeg" width="45%" />
-  <img src="https://i.imgur.com/esxZv9N.jpeg" width="45%" />
-  <img src="https://i.imgur.com/4tTFvZW.jpeg" width="45%" />
-  <img src="https://i.imgur.com/gIExWnd.jpeg" width="45%" />
-  <img src="https://i.imgur.com/X7CG6kk.png" width="45%" />
-  <img src="https://i.imgur.com/y0Ym8iX.jpeg" width="45%" />
-  <img src="https://i.imgur.com/QcwfvAH.jpeg" width="45%" />
-  <img src="https://i.imgur.com/QvUpwfR.jpeg" width="45%" />
+<summary><b>💻 Desktop Interface</b></summary>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <img src="https://i.imgur.com/tZ5NqOG.jpeg" width="45%" alt="PC 1" />
+  <img src="https://i.imgur.com/esxZv9N.jpeg" width="45%" alt="PC 2" />
+  <img src="https://i.imgur.com/4tTFvZW.jpeg" width="45%" alt="PC 3" />
+  <img src="https://i.imgur.com/gIExWnd.jpeg" width="45%" alt="PC 4" />
 </div>
-
 </details>
 
-## ✨ Features
+## 🔧 Installation Guide
 
-### 📝 Text Translation
-- Quick translation when text is highlighted
-- Popup translation with an attractive interface
-- Advanced translation with vocabulary analysis
-- Automatic translation in input fields
+### Step 1: Install a Userscript Manager
+You need a userscript manager. **Violentmonkey** is highly recommended.
 
-### 🖼️ Image Translation (OCR)
-- Translate image files from your computer
-- Capture and translate screenshots
-- Translate images on the web
-- Manga translation with overlay text
+- **Firefox:** Install [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) or [Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/).
+- **Chrome/Edge:** Install [Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) or [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo).
+- **Safari:** Use the [Userscripts](https://apps.apple.com/us/app/userscripts/id1463298887) app.
 
-### 🎵 Media Translation
-- Supports audio files (MP3, WAV, OGG,...)
-- Supports video files (MP4, WEBM,...)
-- Automatically generate SRT subtitles
+### Step 2: Install the King Translator AI Script
+> **Important Note:** Due to new Greasy Fork policies, version 5.0 cannot be updated on their platform at this time. Please **install the latest version directly from GitHub** to get all new features and bug fixes.
 
-### 🌐 Website Translation
-- Translate entire web pages
-- Automatically detect language
-- Translate HTML and PDF files
-- Exclude specific elements as options
+<p align="center">
+  <i>Install the latest version (v5.0) from GitHub:</i>
+  <br><br>
+  <a href="https://raw.githubusercontent.com/king1x32/compiledUserscripts/release/release/King20Translator20AI.user.js" style="text-decoration:none;">
+    <img src="https://img.shields.io/badge/Compressed_Version_(Recommended)-Fast_&_Light-blueviolet?style=for-the-badge&logo=github" alt="GitHub Compressed Version">
+  </a>
+     
+  <a href="https://raw.githubusercontent.com/king1x32/UserScripts/refs/heads/main/King_Translator_AI.user.js" style="text-decoration:none;">
+    <img src="https://img.shields.io/badge/Normal_Version-Source_Code-blue?style=for-the-badge&logo=github" alt="GitHub Normal Version">
+  </a>
+</p>
 
-## 🔧 Detailed Installation Guide
+<p align="center">
+  <i>Older, outdated version on GreasyFork (no longer updated):</i>
+  <br><br>
+  <a href="https://greasyfork.org/en/scripts/529348-king-translator-ai" style="text-decoration:none;">
+    <img src="https://img.shields.io/badge/GreasyFork_(v4.x)-Outdated-gray?style=for-the-badge" alt="Greasy Fork">
+  </a>
+</p>
 
-### Step 1: Install Script Manager Extension
-- **Firefox (Recommended):**
-  - Install Violentmonkey (Open source, recommended) or Tampermonkey
-  - Open Firefox Add-ons and click "Add to Firefox"
+### Step 3: Get & Configure API Keys
+1. **Get API Keys:**
+   - **Gemini (Recommended):** Go to [Google AI Studio](https://makersuite.google.com/app/apikey) -> `Create API Key`.
+   - For other providers, visit their respective websites to obtain an API key (Claude, OpenAI, Perplexity, Mistral).
+2. **Configure the Script:**
+   - Open the script settings (Hotkey `Alt + S` or via the Violentmonkey menu).
+   - In the `API PROVIDER` section, select your desired provider.
+   - Paste your API key(s) into the corresponding field. **Note:** For smooth page and live-caption translation, it is recommended to add multiple keys (3-5 keys) to avoid rate limits.
+   - Click **Save**.
 
-- **Chrome:**
-  - Install Violentmonkey or Tampermonkey from the Chrome Web Store
-  - Click "Add to Chrome"
+## 📚 Usage Guide
 
-### Step 2: Obtain Gemini API Key
-1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in with Google
-3. Click "Create API Key"
-4. Copy the API key
+<details>
+<summary><b>📝 Translating Selected Text</b></summary>
 
-### Step 3: Install the Script
-1. Click the Violentmonkey icon
-2. Go to Dashboard > Utilities
-3. Paste the script link into "Install from URL" (script link at the end of this document)
-4. Confirm the installation
+1. Highlight any text with your mouse.
+2. A small translation button will appear.
+3. **Interact with the button:**
+   - **Single Click:** Popup translation (default).
+   - **Double Click:** Quick translation (displays inline).
+   - **Click and Hold:** Advanced translation (deeper analysis).
+   (These actions are customizable in the settings)
+</details>
 
-### Step 4: Configuration
-1. Open settings (Alt + S or tap 4 fingers)
-2. Choose Gemini as the provider
-3. Enter the API key
-4. Save the settings
+<details>
+<summary><b>✍️ Input Field Translation</b></summary>
 
-## 📚 Detailed Usage Instructions
+- Automatically displays a compact translation tool inside active input fields (chat boxes, comment sections, etc.).
+- Quickly translate the content you're writing to the target language (via the 🌐 button) or back to the source language (via the 🔄 button).
+- Use the `Alt + T` hotkey for instant translation.
+- **(New in v5.0)** The tool's position is now draggable and its location is saved per website.
+</details>
 
-### Text Translation
-1. Highlight the text to be translated
-2. Choose the type of translation:
-   - Single click: Quick translation
-   - Double click: Popup translation
-   - Hold click: Advanced translation
+<details>
+<summary><b>🖼️ Translating Images & Manga</b></summary>
 
-### Input Translation
-- 🌐 : Translate to target language
-- 🔄 : Translate to source language
-- Alt + T: Quick translation
+- **Translate Screen Region:**
+  1. Open the Tools Menu (⚙️ icon in the bottom-right corner) -> `OCR Region Trans`.
+  2. Drag your mouse to select the area of the screen you want to translate.
+- **Translate Web Images:**
+  1. Open the Tools Menu -> `Web Image Trans`.
+  2. Hover over images; a blue border will highlight the selectable image.
+  3. Click the image to translate its content.
+- **Translate Manga:**
+  1. Open the Tools Menu -> `Manga Web Trans`.
+  2. Click on a comic/manga panel.
+  3. The script will automatically detect and translate speech bubbles. You can move or resize the translated overlays.
+</details>
 
-### Translation Tools
-Click "Translation Tools" in the bottom right of the screen:
-- Translate Page
-- Translate Image/OCR
-- Translate Media
-- Translate File
+<details>
+<summary><b>🎵 Translating YouTube Live-Captions</b></summary>
 
-## ⌨️ Shortcuts
+1. Open a YouTube video that has subtitles.
+2. A translation button with the script's logo will appear on the video control bar.
+3. Click this button to toggle real-time subtitle translation.
+</details>
 
-| Shortcut | Function |
-|----------|-----------|
-| Alt + F | Translate page |
-| Alt + Q | Quick translation |
-| Alt + E | Popup translation |
-| Alt + A | Advanced translation |
-| Alt + T | Translate input |
-| Alt + S | Open settings |
+<details>
+<summary><b>📂 Translating Files</b></summary>
 
-## 📱 Touch (Mobile)
+- **Standard File Translation (PDF, HTML, SRT...):**
+  1. Open the Tools Menu -> `File Translate`.
+  2. Select a file from your computer.
+  3. The translated file will be downloaded automatically.
+- **VIP File Translation (Large Files, URLs - Gemini API):**
+  1. Open the Tools Menu -> `Translate VIP`.
+  2. Choose to upload a file (up to 2GB supported) or paste a file URL.
+  3. The result will be displayed in a popup.
+</details>
 
-| Gesture | Function |
-|---------|-----------|
-| 2 fingers | Popup translation |
-| 3 fingers | Advanced translation |
-| 4 fingers | Open settings |
-| 5 fingers | Toggle Tools |
+## ⌨️ Hotkeys & Gestures
 
-## ⚙️ Configuration
+| Action | Hotkey (Windows/Linux) | Hotkey (macOS) | Gesture (Mobile) |
+|---|---|---|---|
+| **Open Settings** | `Alt` + `S` | `Cmd` + `S` | 4-finger tap |
+| **Translate Full Page** | `Alt` + `F` | `Cmd` + `F` | - |
+| **Quick Translate** (selected) | `Alt` + `Q` | `Cmd` + `Q` | - |
+| **Popup Translate** (selected) | `Alt` + `E` | `Cmd` + `E` | 2-finger tap |
+| **Advanced Translate** (selected)| `Alt` + `A` | `Cmd` + `A` | 3-finger tap |
+| **Translate in Input Field** | `Alt` + `T` | `Cmd` + `T` | - |
+| **Toggle Translator Tools** | - | - | 5-finger tap |
 
-### Interface
-- Light/Dark theme
-- Font size
-- Position of the translate button
+## 🤝 Support & Contribution
 
-### API & Models
-- Provider: Gemini AI
-- API Keys
-- Model selection
+- **Bug Reports & Feature Requests:** Please open an [Issue on GitHub](https://github.com/king1x32/King-Translator-AI/issues).
+- **Discussion & Support:** Join our community [Discord Server](https://discord.gg/8DTwr8QpsM).
+- **Code Contributions:** Feel free to fork the project and create a Pull Request. All contributions are welcome!
 
-### Customization
-- Translation prompt
-- Shortcuts
-- Cache
-- Backup/Restore
+### ❤️ Support the Developer
+If you find this script useful, please consider supporting my work with a donation. It helps me dedicate more time to development and updates.
 
-## ❗ Notes
-- A valid Gemini API key is required to access the translation services
-- Limit of 5 requests/10s
-- Cache speeds up translation
-- Supports offline translation with cache
-- Automatic language detection
-- Supports multiple languages
-- **Detailed usage notes:** https://voz.vn/t/script-dung-ai-%C4%91e-dich-moi-thu-text-anh-audio-video.1072947/#-huong-dan-su-dung
-
-## 🤝 Contributions
-
-All contributions are welcome! Please:
-1. Fork the project
-2. Create a new branch
-3. Commit changes
-4. Push to branch
-5. Create a Pull Request
+- **Patreon:** [patreon.com/king1x32](https://www.patreon.com/c/king1x32/membership)
+- **Donation Page:** [kingsmanvn.pages.dev](https://kingsmanvn.pages.dev/)
 
 ## 📄 License
-
-This project is distributed under the GNU General Public License v3.0. See `LICENSE` for more details.
-
-## Donate? Want to support me with a coffee?
-  * If you appreciate this userscript, please consider supporting me with a donation!<br>
-  * Please visit the following link for donation information:<br>
-    - Patreon: [https://www.patreon.com/c/king1x32/membership?](https://www.patreon.com/c/king1x32/membership?)<br>
-    - Website: [https://kingsmanvn.pages.dev](https://kingsmanvn.pages.dev)
-
-## 🔧 Download
-
-1. Normal version: https://greasyfork.org/vi/scripts/529348-king-translator-ai
-
-2. Compressed version (lighter, smoother): https://raw.githubusercontent.com/king1x32/compiledUserscripts/release/release/King20Translator20AI.user.js
+This project is licensed under the GNU General Public License v3.0. See the `LICENSE` file for details.
 
 ---
 
 <div align="center">
   Made with ❤️ by King1x32
   <br>
-  <a href="https://www.patreon.com/c/king1x32/membership?">Patreon</a> •
-  <a href="https://discord.gg/8DTwr8QpsM">Discord</a> •
+  <a href="https://facebook.com/king1x32">Facebook</a> •
   <a href="https://t.me/king1x32">Telegram</a>
 </div>
