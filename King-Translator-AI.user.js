@@ -1,14 +1,13 @@
 // ==UserScript==
 // @name          King Translator AI
 // @namespace     https://kingsmanvn.pages.dev
-// @version       5.2
+// @version       5.3
 // @author        King1x32
 // @icon          https://raw.githubusercontent.com/king1x32/King-Translator-AI/refs/heads/main/icon/kings.jpg
 // @license       GPL3
 // @description   Dịch văn bản (bôi đen văn bản, khi nhập văn bản), hình ảnh, audio, video bằng Google Gemini API. Hỗ trợ popup phân tích từ vựng, popup dịch và dịch nhanh.
 // @match         *://*/*
 // @match         file:///*
-// @exclude-match *://puter.com/*
 // @inject-into   auto
 // @grant         GM_xmlhttpRequest
 // @grant         GM_addStyle
@@ -34,14 +33,13 @@
 // @connect       texttospeech.googleapis.com
 // @connect       github.com
 // @connect       fonts.googleapis.com
-// @require       https://js.puter.com/v2/
 // @require       https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js
 // @require       https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js
 // @require       https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js
 // @require       https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js
 // @homepageURL   https://github.com/king1x32/King-Translator-AI
-// @downloadURL   https://raw.githubusercontent.com/king1x32/King-Translator-AI/refs/heads/main/King_Translator_AI.user.js
-// @updateURL     https://raw.githubusercontent.com/king1x32/King-Translator-AI/refs/heads/main/King_Translator_AI.user.js
+// @downloadURL   https://raw.githubusercontent.com/king1x32/King-Translator-AI/refs/heads/main/King-Translator-AI.user.js
+// @updateURL     https://raw.githubusercontent.com/king1x32/King-Translator-AI/refs/heads/main/King-Translator-AI.user.js
 // ==/UserScript==
 (function() {
   "use strict";
@@ -58,6 +56,7 @@
           uploadUrl: "https://generativelanguage.googleapis.com/upload/v1beta/files",
           models: {
             fast: [
+              "gemini-2.5-flash-lite",
               "gemini-2.5-flash-lite-preview-06-17",
               "gemini-2.5-flash",
               "gemini-2.5-flash-preview-05-20",
@@ -322,78 +321,6 @@
             throw new Error((this._("notifications.failed_read_api")));
           }
         },
-        puter: {
-          models: {
-            fast: [
-              "claude-3-7-sonnet",
-              "claude-3-5-sonnet",
-              "gemini-2.0-flash",
-              "gemini-1.5-flash",
-              "o4-mini",
-              "o3-mini",
-              "o1-mini",
-              "gpt-4.1-mini",
-              "gpt-4.1-nano",
-              "gpt-4o-mini",
-              "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
-              "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
-              "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
-            ],
-            balance: [
-              "o3",
-              "o1",
-              "gpt-4.5-preview",
-              "gpt-4.1",
-              "gpt-4o",
-              "grok-beta"
-            ],
-            pro: [
-              "deepseek-chat",
-              "deepseek-reasoner",
-              "mistral-large-latest",
-              "pixtral-large-latest",
-              "codestral-latest",
-              "google/gemma-2-27b-it",
-              "openrouter:01-ai/yi-large",
-              "x-ai/grok-3-beta",
-              "gpt-4o", "gpt-4o-mini", "o1", "o1-mini", "o1-pro", "o3", "o3-mini", "o4-mini", "gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano", "gpt-4.5-preview", "claude-opus-4-20250514", "claude-opus-4", "claude-opus-4-latest", "claude-sonnet-4-20250514", "claude-sonnet-4", "claude-sonnet-4-latest", "claude-3-7-sonnet-20250219", "claude-3-7-sonnet-latest", "claude-3-5-sonnet-20241022", "claude-3-5-sonnet-latest", "claude-3-5-sonnet-20240620", "claude-3-haiku-20240307", "togethercomputer/m2-bert-80M-32k-retrieval", "cartesia/sonic", "black-forest-labs/FLUX.1-schnell-Free", "intfloat/multilingual-e5-large-instruct", "Alibaba-NLP/gte-modernbert-base", "meta-llama/LlamaGuard-2-8b", "cartesia/sonic-2", "meta-llama/Llama-3.3-70B-Instruct-Turbo", "togethercomputer/MoA-1", "meta-llama/Meta-Llama-3-70B-Instruct-Turbo", "black-forest-labs/FLUX.1-pro", "black-forest-labs/FLUX.1.1-pro", "black-forest-labs/FLUX.1-redux", "meta-llama/Meta-Llama-Guard-3-8B", "arcee-ai/AFM-4.5B-Preview", "deepseek-ai/DeepSeek-V3", "lgai/exaone-3-5-32b-instruct", "deepseek-ai/DeepSeek-R1-0528-tput", "black-forest-labs/FLUX.1-canny", "mistralai/Mixtral-8x7B-Instruct-v0.1", "meta-llama/Llama-4-Scout-17B-16E-Instruct", "meta-llama/Llama-Vision-Free", "meta-llama/Llama-3-8b-chat-hf", "mistralai/Mistral-7B-Instruct-v0.1", "Qwen/Qwen2.5-VL-72B-Instruct", "BAAI/bge-base-en-v1.5-vllm", "meta-llama/Llama-2-70b-hf", "togethercomputer/MoA-1-Turbo", "meta-llama/Meta-Llama-3-8B-Instruct-Lite", "black-forest-labs/FLUX.1-kontext-max", "perplexity-ai/r1-1776", "mistralai/Mistral-7B-Instruct-v0.2", "deepseek-ai/DeepSeek-V3-p-dp", "arcee_ai/arcee-spotlight", "Qwen/Qwen2-72B-Instruct", "black-forest-labs/FLUX.1-schnell", "mistralai/Mistral-7B-Instruct-v0.3", "black-forest-labs/FLUX.1-dev", "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO", "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo", "meta-llama/Llama-Guard-3-11B-Vision-Turbo", "google/gemma-2-27b-it", "togethercomputer/Refuel-Llm-V2-Small", "Qwen/Qwen2-VL-72B-Instruct", "meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo", "scb10x/scb10x-llama3-1-typhoon2-70b-instruct", "black-forest-labs/FLUX.1-dev-lora", "arcee-ai/maestro-reasoning", "togethercomputer/Refuel-Llm-V2", "Salesforce/Llama-Rank-V1", "Qwen/Qwen2.5-Coder-32B-Instruct", "meta-llama/Llama-3.2-3B-Instruct-Turbo", "arcee-ai/virtuoso-medium-v2", "arcee-ai/coder-large", "meta-llama/Llama-Guard-4-12B", "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B", "arcee-ai/virtuoso-large", "Qwen/Qwen2.5-72B-Instruct-Turbo", "meta-llama/Llama-3-70b-chat-hf", "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B", "black-forest-labs/FLUX.1-depth", "deepseek-ai/DeepSeek-R1-Distill-Llama-70B", "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF", "Qwen/QwQ-32B", "deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free", "mistralai/Mistral-Small-24B-Instruct-2501", "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8", "marin-community/marin-8b-instruct", "Qwen/Qwen2.5-7B-Instruct-Turbo", "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo", "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo", "scb10x/scb10x-typhoon-2-1-gemma3-12b", "Qwen/Qwen3-235B-A22B-fp8-tput", "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo", "arcee-ai/caller", "black-forest-labs/FLUX.1-kontext-pro", "lgai/exaone-deep-32b", "deepseek-ai/DeepSeek-R1", "arcee-ai/arcee-blitz", "meta-llama/Llama-3.3-70B-Instruct-Turbo-Free", "model-fallback-test-1", "ministral-3b-2410", "ministral-3b-latest", "ministral-8b-2410", "ministral-8b-latest", "open-mistral-7b", "mistral-tiny", "mistral-tiny-2312", "open-mixtral-8x7b", "mistral-small", "mistral-small-2312", "open-mixtral-8x22b", "open-mixtral-8x22b-2404", "mistral-large-2411", "mistral-large-latest", "pixtral-large-2411", "pixtral-large-latest", "mistral-large-pixtral-2411", "codestral-2501", "codestral-latest", "codestral-2412", "codestral-2411-rc5", "codestral-2405", "pixtral-12b-2409", "pixtral-12b", "pixtral-12b-latest", "mistral-small-2503", "mistral-small-latest", "mistral-small-2402", "grok-beta", "grok-vision-beta", "deepseek-chat", "deepseek-reasoner", "gemini-1.5-flash", "gemini-2.0-flash", "openrouter:mistralai/mistral-small-3.2-24b-instruct:free", "openrouter:minimax/minimax-m1", "openrouter:minimax/minimax-m1:extended", "openrouter:google/gemini-2.5-flash-lite-preview-06-17", "openrouter:google/gemini-2.5-flash", "openrouter:google/gemini-2.5-pro", "openrouter:moonshotai/kimi-dev-72b:free", "openrouter:openai/o3-pro", "openrouter:x-ai/grok-3-mini", "openrouter:x-ai/grok-3", "openrouter:mistralai/magistral-small-2506", "openrouter:mistralai/magistral-medium-2506", "openrouter:mistralai/magistral-medium-2506:thinking", "openrouter:google/gemini-2.5-pro-preview", "openrouter:sentientagi/dobby-mini-unhinged-plus-llama-3.1-8b", "openrouter:deepseek/deepseek-r1-distill-qwen-7b", "openrouter:deepseek/deepseek-r1-0528-qwen3-8b:free", "openrouter:deepseek/deepseek-r1-0528-qwen3-8b", "openrouter:deepseek/deepseek-r1-0528:free", "openrouter:deepseek/deepseek-r1-0528", "openrouter:sarvamai/sarvam-m:free", "openrouter:thedrummer/valkyrie-49b-v1", "openrouter:anthropic/claude-opus-4", "openrouter:anthropic/claude-sonnet-4", "openrouter:mistralai/devstral-small:free", "openrouter:mistralai/devstral-small", "openrouter:google/gemma-3n-e4b-it:free", "openrouter:google/gemini-2.5-flash-preview-05-20", "openrouter:google/gemini-2.5-flash-preview-05-20:thinking", "openrouter:openai/codex-mini", "openrouter:meta-llama/llama-3.3-8b-instruct:free", "openrouter:mistralai/mistral-medium-3", "openrouter:google/gemini-2.5-pro-preview-05-06", "openrouter:arcee-ai/caller-large", "openrouter:arcee-ai/spotlight", "openrouter:arcee-ai/maestro-reasoning", "openrouter:arcee-ai/virtuoso-large", "openrouter:arcee-ai/coder-large", "openrouter:arcee-ai/virtuoso-medium-v2", "openrouter:arcee-ai/arcee-blitz", "openrouter:microsoft/phi-4-reasoning-plus:free", "openrouter:microsoft/phi-4-reasoning-plus", "openrouter:microsoft/phi-4-reasoning:free", "openrouter:inception/mercury-coder-small-beta", "openrouter:opengvlab/internvl3-14b:free", "openrouter:opengvlab/internvl3-2b:free", "openrouter:deepseek/deepseek-prover-v2", "openrouter:meta-llama/llama-guard-4-12b", "openrouter:qwen/qwen3-30b-a3b:free", "openrouter:qwen/qwen3-30b-a3b", "openrouter:qwen/qwen3-8b:free", "openrouter:qwen/qwen3-8b", "openrouter:qwen/qwen3-14b:free", "openrouter:qwen/qwen3-14b", "openrouter:qwen/qwen3-32b:free", "openrouter:qwen/qwen3-32b", "openrouter:qwen/qwen3-235b-a22b:free", "openrouter:qwen/qwen3-235b-a22b", "openrouter:tngtech/deepseek-r1t-chimera:free", "openrouter:thudm/glm-z1-rumination-32b", "openrouter:microsoft/mai-ds-r1:free", "openrouter:thudm/glm-z1-32b:free", "openrouter:thudm/glm-z1-32b", "openrouter:thudm/glm-4-32b:free", "openrouter:thudm/glm-4-32b", "openrouter:google/gemini-2.5-flash-preview", "openrouter:google/gemini-2.5-flash-preview:thinking", "openrouter:openai/o4-mini-high", "openrouter:openai/o3", "openrouter:openai/o4-mini", "openrouter:shisa-ai/shisa-v2-llama3.3-70b:free", "openrouter:openai/gpt-4.1", "openrouter:openai/gpt-4.1-mini", "openrouter:openai/gpt-4.1-nano", "openrouter:eleutherai/llemma_7b", "openrouter:alfredpros/codellama-7b-instruct-solidity", "openrouter:arliai/qwq-32b-arliai-rpr-v1:free", "openrouter:agentica-org/deepcoder-14b-preview:free", "openrouter:moonshotai/kimi-vl-a3b-thinking:free", "openrouter:x-ai/grok-3-mini-beta", "openrouter:x-ai/grok-3-beta", "openrouter:nvidia/llama-3.3-nemotron-super-49b-v1:free", "openrouter:nvidia/llama-3.3-nemotron-super-49b-v1", "openrouter:nvidia/llama-3.1-nemotron-ultra-253b-v1:free", "openrouter:nvidia/llama-3.1-nemotron-ultra-253b-v1", "openrouter:meta-llama/llama-4-maverick:free", "openrouter:meta-llama/llama-4-maverick", "openrouter:meta-llama/llama-4-scout:free", "openrouter:meta-llama/llama-4-scout", "openrouter:all-hands/openhands-lm-32b-v0.1", "openrouter:deepseek/deepseek-v3-base:free", "openrouter:scb10x/llama3.1-typhoon2-70b-instruct", "openrouter:google/gemini-2.5-pro-exp-03-25", "openrouter:qwen/qwen2.5-vl-32b-instruct:free", "openrouter:qwen/qwen2.5-vl-32b-instruct", "openrouter:deepseek/deepseek-chat-v3-0324:free", "openrouter:deepseek/deepseek-chat-v3-0324", "openrouter:featherless/qwerky-72b:free", "openrouter:openai/o1-pro", "openrouter:mistralai/mistral-small-3.1-24b-instruct:free", "openrouter:mistralai/mistral-small-3.1-24b-instruct", "openrouter:google/gemma-3-4b-it:free", "openrouter:google/gemma-3-4b-it", "openrouter:ai21/jamba-1.6-large", "openrouter:ai21/jamba-1.6-mini", "openrouter:google/gemma-3-12b-it:free", "openrouter:google/gemma-3-12b-it", "openrouter:cohere/command-a", "openrouter:openai/gpt-4o-mini-search-preview", "openrouter:openai/gpt-4o-search-preview", "openrouter:rekaai/reka-flash-3:free", "openrouter:google/gemma-3-27b-it:free", "openrouter:google/gemma-3-27b-it", "openrouter:thedrummer/anubis-pro-105b-v1", "openrouter:thedrummer/skyfall-36b-v2", "openrouter:microsoft/phi-4-multimodal-instruct", "openrouter:perplexity/sonar-reasoning-pro", "openrouter:perplexity/sonar-pro", "openrouter:perplexity/sonar-deep-research", "openrouter:qwen/qwq-32b:free", "openrouter:qwen/qwq-32b", "openrouter:nousresearch/deephermes-3-llama-3-8b-preview:free", "openrouter:openai/gpt-4.5-preview", "openrouter:google/gemini-2.0-flash-lite-001", "openrouter:anthropic/claude-3.7-sonnet", "openrouter:anthropic/claude-3.7-sonnet:beta", "openrouter:anthropic/claude-3.7-sonnet:thinking", "openrouter:perplexity/r1-1776", "openrouter:mistralai/mistral-saba", "openrouter:cognitivecomputations/dolphin3.0-r1-mistral-24b:free", "openrouter:cognitivecomputations/dolphin3.0-mistral-24b:free", "openrouter:meta-llama/llama-guard-3-8b", "openrouter:openai/o3-mini-high", "openrouter:deepseek/deepseek-r1-distill-llama-8b", "openrouter:google/gemini-2.0-flash-001", "openrouter:qwen/qwen-vl-plus", "openrouter:aion-labs/aion-1.0", "openrouter:aion-labs/aion-1.0-mini", "openrouter:aion-labs/aion-rp-llama-3.1-8b", "openrouter:qwen/qwen-vl-max", "openrouter:qwen/qwen-turbo", "openrouter:qwen/qwen2.5-vl-72b-instruct:free", "openrouter:qwen/qwen2.5-vl-72b-instruct", "openrouter:qwen/qwen-plus", "openrouter:qwen/qwen-max", "openrouter:openai/o3-mini", "openrouter:deepseek/deepseek-r1-distill-qwen-1.5b", "openrouter:mistralai/mistral-small-24b-instruct-2501:free", "openrouter:mistralai/mistral-small-24b-instruct-2501", "openrouter:deepseek/deepseek-r1-distill-qwen-32b:free", "openrouter:deepseek/deepseek-r1-distill-qwen-32b", "openrouter:deepseek/deepseek-r1-distill-qwen-14b:free", "openrouter:deepseek/deepseek-r1-distill-qwen-14b", "openrouter:perplexity/sonar-reasoning", "openrouter:perplexity/sonar", "openrouter:liquid/lfm-7b", "openrouter:liquid/lfm-3b", "openrouter:deepseek/deepseek-r1-distill-llama-70b:free", "openrouter:deepseek/deepseek-r1-distill-llama-70b", "openrouter:deepseek/deepseek-r1:free", "openrouter:deepseek/deepseek-r1", "openrouter:minimax/minimax-01", "openrouter:mistralai/codestral-2501", "openrouter:microsoft/phi-4", "openrouter:deepseek/deepseek-chat:free", "openrouter:deepseek/deepseek-chat", "openrouter:sao10k/l3.3-euryale-70b", "openrouter:openai/o1", "openrouter:eva-unit-01/eva-llama-3.33-70b", "openrouter:x-ai/grok-2-vision-1212", "openrouter:x-ai/grok-2-1212", "openrouter:cohere/command-r7b-12-2024", "openrouter:google/gemini-2.0-flash-exp:free", "openrouter:meta-llama/llama-3.3-70b-instruct:free", "openrouter:meta-llama/llama-3.3-70b-instruct", "openrouter:amazon/nova-lite-v1", "openrouter:amazon/nova-micro-v1", "openrouter:amazon/nova-pro-v1", "openrouter:qwen/qwq-32b-preview", "openrouter:eva-unit-01/eva-qwen-2.5-72b", "openrouter:openai/gpt-4o-2024-11-20", "openrouter:mistralai/mistral-large-2411", "openrouter:mistralai/mistral-large-2407", "openrouter:mistralai/pixtral-large-2411", "openrouter:x-ai/grok-vision-beta", "openrouter:infermatic/mn-inferor-12b", "openrouter:qwen/qwen-2.5-coder-32b-instruct:free", "openrouter:qwen/qwen-2.5-coder-32b-instruct", "openrouter:raifle/sorcererlm-8x22b", "openrouter:eva-unit-01/eva-qwen-2.5-32b", "openrouter:thedrummer/unslopnemo-12b", "openrouter:anthropic/claude-3.5-haiku:beta", "openrouter:anthropic/claude-3.5-haiku", "openrouter:anthropic/claude-3.5-haiku-20241022:beta", "openrouter:anthropic/claude-3.5-haiku-20241022", "openrouter:neversleep/llama-3.1-lumimaid-70b", "openrouter:anthracite-org/magnum-v4-72b", "openrouter:anthropic/claude-3.5-sonnet:beta", "openrouter:anthropic/claude-3.5-sonnet", "openrouter:x-ai/grok-beta", "openrouter:mistralai/ministral-8b", "openrouter:mistralai/ministral-3b", "openrouter:qwen/qwen-2.5-7b-instruct", "openrouter:nvidia/llama-3.1-nemotron-70b-instruct", "openrouter:inflection/inflection-3-productivity", "openrouter:inflection/inflection-3-pi", "openrouter:google/gemini-flash-1.5-8b", "openrouter:thedrummer/rocinante-12b", "openrouter:anthracite-org/magnum-v2-72b", "openrouter:liquid/lfm-40b", "openrouter:meta-llama/llama-3.2-3b-instruct:free", "openrouter:meta-llama/llama-3.2-3b-instruct", "openrouter:meta-llama/llama-3.2-1b-instruct:free", "openrouter:meta-llama/llama-3.2-1b-instruct", "openrouter:meta-llama/llama-3.2-90b-vision-instruct", "openrouter:meta-llama/llama-3.2-11b-vision-instruct:free", "openrouter:meta-llama/llama-3.2-11b-vision-instruct", "openrouter:qwen/qwen-2.5-72b-instruct:free", "openrouter:qwen/qwen-2.5-72b-instruct", "openrouter:neversleep/llama-3.1-lumimaid-8b", "openrouter:openai/o1-preview", "openrouter:openai/o1-preview-2024-09-12", "openrouter:openai/o1-mini", "openrouter:openai/o1-mini-2024-09-12", "openrouter:mistralai/pixtral-12b", "openrouter:cohere/command-r-plus-08-2024", "openrouter:cohere/command-r-08-2024", "openrouter:qwen/qwen-2.5-vl-7b-instruct", "openrouter:sao10k/l3.1-euryale-70b", "openrouter:microsoft/phi-3.5-mini-128k-instruct", "openrouter:nousresearch/hermes-3-llama-3.1-70b", "openrouter:nousresearch/hermes-3-llama-3.1-405b", "openrouter:openai/chatgpt-4o-latest", "openrouter:sao10k/l3-lunaris-8b", "openrouter:aetherwiing/mn-starcannon-12b", "openrouter:openai/gpt-4o-2024-08-06", "openrouter:meta-llama/llama-3.1-405b", "openrouter:nothingiisreal/mn-celeste-12b", "openrouter:perplexity/llama-3.1-sonar-small-128k-online", "openrouter:perplexity/llama-3.1-sonar-large-128k-online", "openrouter:meta-llama/llama-3.1-8b-instruct:free", "openrouter:meta-llama/llama-3.1-8b-instruct", "openrouter:meta-llama/llama-3.1-405b-instruct", "openrouter:meta-llama/llama-3.1-70b-instruct", "openrouter:mistralai/mistral-nemo:free", "openrouter:mistralai/mistral-nemo", "openrouter:openai/gpt-4o-mini", "openrouter:openai/gpt-4o-mini-2024-07-18", "openrouter:google/gemma-2-27b-it", "openrouter:alpindale/magnum-72b", "openrouter:google/gemma-2-9b-it:free", "openrouter:google/gemma-2-9b-it", "openrouter:01-ai/yi-large", "openrouter:anthropic/claude-3.5-sonnet-20240620:beta", "openrouter:anthropic/claude-3.5-sonnet-20240620", "openrouter:sao10k/l3-euryale-70b", "openrouter:cognitivecomputations/dolphin-mixtral-8x22b", "openrouter:qwen/qwen-2-72b-instruct", "openrouter:mistralai/mistral-7b-instruct:free", "openrouter:mistralai/mistral-7b-instruct", "openrouter:nousresearch/hermes-2-pro-llama-3-8b", "openrouter:mistralai/mistral-7b-instruct-v0.3", "openrouter:microsoft/phi-3-mini-128k-instruct", "openrouter:microsoft/phi-3-medium-128k-instruct", "openrouter:neversleep/llama-3-lumimaid-70b", "openrouter:google/gemini-flash-1.5", "openrouter:openai/gpt-4o", "openrouter:openai/gpt-4o:extended", "openrouter:meta-llama/llama-guard-2-8b", "openrouter:openai/gpt-4o-2024-05-13", "openrouter:neversleep/llama-3-lumimaid-8b", "openrouter:sao10k/fimbulvetr-11b-v2", "openrouter:meta-llama/llama-3-8b-instruct", "openrouter:meta-llama/llama-3-70b-instruct", "openrouter:mistralai/mixtral-8x22b-instruct", "openrouter:microsoft/wizardlm-2-8x22b", "openrouter:google/gemini-pro-1.5", "openrouter:openai/gpt-4-turbo", "openrouter:cohere/command-r-plus", "openrouter:cohere/command-r-plus-04-2024", "openrouter:sophosympatheia/midnight-rose-70b", "openrouter:cohere/command", "openrouter:cohere/command-r", "openrouter:anthropic/claude-3-haiku:beta", "openrouter:anthropic/claude-3-haiku", "openrouter:anthropic/claude-3-opus:beta", "openrouter:anthropic/claude-3-opus", "openrouter:anthropic/claude-3-sonnet:beta", "openrouter:anthropic/claude-3-sonnet", "openrouter:cohere/command-r-03-2024", "openrouter:mistralai/mistral-large", "openrouter:openai/gpt-3.5-turbo-0613", "openrouter:openai/gpt-4-turbo-preview", "openrouter:nousresearch/nous-hermes-2-mixtral-8x7b-dpo", "openrouter:mistralai/mistral-medium", "openrouter:mistralai/mistral-small", "openrouter:mistralai/mistral-tiny", "openrouter:mistralai/mistral-7b-instruct-v0.2", "openrouter:mistralai/mixtral-8x7b-instruct", "openrouter:neversleep/noromaid-20b", "openrouter:anthropic/claude-2.1:beta", "openrouter:anthropic/claude-2.1", "openrouter:anthropic/claude-2:beta", "openrouter:anthropic/claude-2", "openrouter:undi95/toppy-m-7b", "openrouter:alpindale/goliath-120b", "openrouter:openrouter/auto", "openrouter:openai/gpt-3.5-turbo-1106", "openrouter:openai/gpt-4-1106-preview", "openrouter:openai/gpt-3.5-turbo-instruct", "openrouter:mistralai/mistral-7b-instruct-v0.1", "openrouter:pygmalionai/mythalion-13b", "openrouter:openai/gpt-3.5-turbo-16k", "openrouter:mancer/weaver", "openrouter:anthropic/claude-2.0:beta", "openrouter:anthropic/claude-2.0", "openrouter:undi95/remm-slerp-l2-13b", "openrouter:gryphe/mythomax-l2-13b", "openrouter:openai/gpt-3.5-turbo", "openrouter:openai/gpt-3.5-turbo-0125", "openrouter:openai/gpt-4", "openrouter:openai/gpt-4-0314", "fake", "costly", "abuse"
-            ]
-          },
-          chat: async (content, options = {}) => {
-            try {
-              return await puter.ai.chat(content, {
-                model: options.model || "gpt-4o-mini",
-                ...options
-              });
-            } catch (error) {
-              console.error("Puter Chat API error:", error);
-              throw error;
-            }
-          },
-          vision: async (prompt, base64Image, test = false, options = {}) => {
-            try {
-              return await puter.ai.chat(prompt, base64Image, test, {
-                model: options.model || "gpt-4o-mini",
-                ...options
-              });
-            } catch (error) {
-              console.error("Puter Vision API error:", error);
-              throw error;
-            }
-          },
-          responseParser: (response) => {
-            if (typeof response === "string") {
-              return response;
-            } else if (typeof response.text === "string") {
-              return response.text;
-            } else if (typeof response.message.content === "string") {
-              return response.message.content;
-            } else if (response?.message?.content?.[0]?.text) {
-              return response.message.content[0].text;
-            }
-            throw new Error((this._("notifications.failed_read_api")));
-          }
-        },
         ollama: {
           models: {},
           headers: {
@@ -488,9 +415,6 @@
           model_label: "Model",
           custom_model_placeholder: "Nhập tên model",
           add_key: "+ Thêm {provider} Key",
-          account_puter: "ACCOUNT PUTER",
-          sign_in: "Sign in",
-          sign_out: "Sign out",
           input_translation_section: "DỊCH KHI VIẾT",
           enable_feature: "Bật tính năng:",
           save_position: "Lưu vị trí khi di chuyển:",
@@ -608,11 +532,11 @@
           media_cache: "Media Cache",
           enable_media_cache: "Bật cache media:",
           media_cache_max_size: "Media cache entries:",
-          media_cache_expiration: "Thời gian expire (giây):",
+          media_cache_expiration: "Thời gian expire (ms):",
           tts_cache: "TTS Cache",
           enable_tts_cache: "Bật cache TTS:",
           tts_cache_max_size: "TTS cache entries:",
-          tts_cache_expiration: "Thời gian expire (giây):",
+          tts_cache_expiration: "Thời gian expire (ms):",
           backup_settings_section: "SAO LƯU CÀI ĐẶT",
           export_settings: "Xuất cài đặt",
           import_settings: "Nhập cài đặt",
@@ -801,7 +725,7 @@
           file_input_url_placeholder: "Dán URL file vào đây",
           invalid_url_format: "Định dạng URL không hợp lệ. Vui lòng nhập URL hợp lệ (bắt đầu bằng http:// hoặc https://).", // Thêm dòng này
           processing_url: "Đang xử lý URL...",
-          unsupport_file_url_provider: "API Provider này không hỗ trợ trực tiếp URL file. Vui lòng chọn Gemini hoặc Puter.",
+          unsupport_file_url_provider: "API Provider này không hỗ trợ trực tiếp URL file. Vui lòng chọn Gemini.",
           google_translate_page_menu_label: "Google Dịch (Page)",
           google_translate_enabled: "Đã bật dịch trang với Google Translate.",
           google_translate_already_active: "Google Translate đang hoạt động. Vui lòng làm mới trang để tắt.",
@@ -844,9 +768,6 @@
           model_label: "Model",
           custom_model_placeholder: "Enter custom model name",
           add_key: "+ Add {provider} Key",
-          account_puter: "PUTER ACCOUNT",
-          sign_in: "Sign In",
-          sign_out: "Sign Out",
           input_translation_section: "INPUT TRANSLATION",
           enable_feature: "Enable Feature:",
           save_position: "Save position when moved:",
@@ -964,11 +885,11 @@
           media_cache: "Media Cache",
           enable_media_cache: "Enable Media Cache:",
           media_cache_max_size: "Media Cache Entries:",
-          media_cache_expiration: "Expiration Time (seconds):",
+          media_cache_expiration: "Expiration Time (ms):",
           tts_cache: "TTS Cache",
           enable_tts_cache: "Enable TTS Cache:",
           tts_cache_max_size: "TTS Cache Entries:",
-          tts_cache_expiration: "Expiration Time (seconds):",
+          tts_cache_expiration: "Expiration Time (ms):",
           backup_settings_section: "SETTINGS BACKUP",
           export_settings: "Export Settings",
           import_settings: "Import Settings",
@@ -1157,7 +1078,7 @@
           file_input_url_placeholder: "Paste file URL here",
           invalid_url_format: "Invalid URL format. Please enter a valid URL (starting with http:// or https://).", // Add this line
           processing_url: "Processing URL...",
-          unsupport_file_url_provider: "This API Provider does not support direct file URLs. Please select Gemini or Puter.",
+          unsupport_file_url_provider: "This API Provider does not support direct file URLs. Please select Gemini.",
           google_translate_page_menu_label: " Google Trans (Page)",
           google_translate_enabled: "Google Translate page translation enabled.",
           google_translate_already_active: "Google Translate is already active. Please refresh page to disable.",
@@ -1863,7 +1784,7 @@
         expirationTime: 5 * 60 * 1000, // 5 phút
       },
       image: {
-        maxSize: 100, // Tối đa 100 entries cho ảnh
+        maxSize: 50, // Tối đa 100 entries cho ảnh
         expirationTime: 30 * 60 * 1000, // 30 phút
       },
       media: {
@@ -1871,7 +1792,7 @@
         expirationTime: 30 * 60 * 1000, // 30 phút
       },
       tts: {
-        maxSize: 100, // Tối đa 100 file audio
+        maxSize: 50, // Tối đa 100 file audio
         expirationTime: 30 * 60 * 1000, // 30 phút
       }
     },
@@ -2013,13 +1934,6 @@
       researchModel: "open-mistral-nemo",
       premierModel: "codestral-latest",
       customModel: "",
-    },
-    puterOptions: {
-      modelType: "fast", // 'fast', 'balance', 'pro', 'custom'
-      fastModel: "claude-3-7-sonnet",
-      balanceModel: "gpt-4.5-preview",
-      proModel: "o1-pro",
-      customModel: ""
     },
     ollamaOptions: {
       endpoint: "http://localhost:11434",
@@ -2380,8 +2294,7 @@
         ['claude', 'Claude'],
         ['openai', 'OpenAI'],
         ['mistral', 'Mistral'],
-        ['puter', 'Puter'],
-        ['ollama', 'Ollama (Local)']
+        ['ollama', 'Ollama']
       ];
       return `
 <div style="margin-bottom: 15px;">
@@ -2402,7 +2315,6 @@
     }
     createApiKeySection(provider, settings) {
       const keys = settings.apiKey[provider];
-      if (provider === 'puter') return '';
       return `
   <div id="${provider}Keys" style="margin-bottom: 10px;">
     <h4 class="settings-label" style="margin-bottom: 5px;">${this.capitalize(provider)} API Keys</h4>
@@ -2522,7 +2434,7 @@
 ${this.createProviderRadios(settings)}
 <div style="margin-bottom: 15px;">
   <h3>API MODEL</h3>
-  ${['gemini', 'perplexity', 'claude', 'openai', 'mistral', 'puter', 'ollama']
+  ${['gemini', 'perplexity', 'claude', 'openai', 'mistral', 'ollama']
           .map(p => this.createModelSection(p, settings)).join('')}
 </div>
 <div style="margin-bottom: 15px;">
@@ -2769,13 +2681,6 @@ button:active {
       <input type="radio" name="uiLanguage" value="vi" ${this.settings.uiLanguage === "vi" ? "checked" : ""}>
       <span class="settings-label">Tiếng Việt</span>
     </label>
-  </div>
-</div>
-<div class="puter-sign" style="display: ${this.settings.apiProvider === "puter" ? "" : "none"}; margin-bottom: 15px;">
-  <h3>${this._("settings.account_puter")}</h3>
-  <div class="settings-grid">
-    <button id="puter-signin" class="settings-label" style="background-color: #28a745; margin-top: 5px;">${this._("settings.sign_in")}</button>
-    <button id="puter-signout" class="settings-input" style="background-color: ${isDark ? "#202020" : "#999"};">${this._("settings.sign_out")}</button>
   </div>
 </div>
 ${this.renderSettingsUI(this.settings)}
@@ -3460,8 +3365,8 @@ ${this.renderSettingsUI(this.settings)}
       </div>
       <div class="settings-grid">
         <span class="settings-label">${this._("settings.media_cache_expiration")}</span>
-        <input type="number" id="mediaCacheExpiration" class="settings-input" value="${this.settings.cacheOptions.media?.expirationTime / 1000 ||
-        CONFIG.CACHE.media.expirationTime / 1000
+        <input type="number" id="mediaCacheExpiration" class="settings-input" value="${this.settings.cacheOptions.media?.expirationTime ||
+        CONFIG.CACHE.media.expirationTime
         }" min="60000" step="60000">
       </div>
     </div>
@@ -3480,8 +3385,8 @@ ${this.renderSettingsUI(this.settings)}
       </div>
       <div class="settings-grid">
         <span class="settings-label">${this._("settings.tts_cache_expiration")}</span>
-        <input type="number" id="ttsCacheExpiration" class="settings-input" value="${this.settings.cacheOptions.tts?.expirationTime / 1000 ||
-        CONFIG.CACHE.tts.expirationTime / 1000
+        <input type="number" id="ttsCacheExpiration" class="settings-input" value="${this.settings.cacheOptions.tts?.expirationTime ||
+        CONFIG.CACHE.tts.expirationTime
         }" min="60000" step="60000">
       </div>
     </div>
@@ -3618,11 +3523,10 @@ ${this.renderSettingsUI(this.settings)}
       navContainer.appendChild(navButton);
       navContainer.appendChild(navMenu);
       header.appendChild(navContainer);
-      const providers = ['gemini', 'perplexity', 'claude', 'openai', 'mistral', 'puter', 'ollama'];
+      const providers = ['gemini', 'perplexity', 'claude', 'openai', 'mistral', 'ollama'];
       container.querySelectorAll('input[name="apiProvider"]').forEach(radio => {
         radio.addEventListener('change', (e) => {
           const provider = e.target.value;
-          container.querySelector('.puter-sign').style.display = provider === "puter" ? '' : 'none';
           providers.forEach(p => {
             const modelsContainer = container.querySelector(`.${p}-models`);
             const keysContainer = container.querySelector(`#${p}Keys`);
@@ -3630,14 +3534,6 @@ ${this.renderSettingsUI(this.settings)}
             if (keysContainer) keysContainer.style.display = p === provider ? '' : 'none';
           });
         });
-      });
-      container.querySelector('#puter-signin').addEventListener('click', async () => {
-        await puter.auth.signIn().then((res) => {
-          puter.print('Signed in<br>' + JSON.stringify(res));
-        });
-      });
-      container.querySelector('#puter-signout').addEventListener('click', async () => {
-        await puter.auth.signOut();
       });
       providers.forEach(provider => {
         const modelType = container.querySelector(`#${provider}ModelType`);
@@ -3925,10 +3821,6 @@ ${this.renderSettingsUI(this.settings)}
           ...DEFAULT_SETTINGS.mistralOptions,
           ...(savedSettings?.mistralOptions || {})
         },
-        puterOptions: {
-          ...DEFAULT_SETTINGS.puterOptions,
-          ...(savedSettings?.puterOptions || {})
-        },
         ollamaOptions: {
           ...DEFAULT_SETTINGS.ollamaOptions,
           ...(savedSettings?.ollamaOptions || {})
@@ -4138,13 +4030,6 @@ ${this.renderSettingsUI(this.settings)}
           researchModel: settingsUI.querySelector('#mistral-research-model')?.value,
           premierModel: settingsUI.querySelector('#mistral-premier-model')?.value,
           customModel: settingsUI.querySelector('#mistral-custom-model')?.value,
-        },
-        puterOptions: {
-          modelType: settingsUI.querySelector('#puterModelType')?.value,
-          fastModel: settingsUI.querySelector('#puter-fast-model')?.value,
-          balanceModel: settingsUI.querySelector('#puter-balance-model')?.value,
-          proModel: settingsUI.querySelector('#puter-pro-model')?.value,
-          customModel: settingsUI.querySelector('#puter-custom-model')?.value
         },
         ollamaOptions: {
           endpoint: settingsUI.querySelector('#ollama-endpoint')?.value.trim(),
@@ -4364,7 +4249,7 @@ ${this.renderSettingsUI(this.settings)}
             expirationTime:
               parseInt(
                 settingsUI.querySelector("#mediaCacheExpiration").value
-              ) * 1000
+              )
           },
           tts: {
             enabled: settingsUI.querySelector("#ttsCacheEnabled").checked,
@@ -4651,12 +4536,6 @@ ${this.renderSettingsUI(this.settings)}
         throw new Error(`Provider ${this.currentProvider} not found`);
       }
       try {
-        if (this.currentProvider === "puter") {
-          const result = await provider.chat(prompt, {
-            model: this.getModel(),
-          });
-          return provider.responseParser(result);
-        }
         if (this.currentProvider === "ollama") {
           return await this.makeApiRequest(null, prompt, useCase);
         }
@@ -5388,7 +5267,7 @@ margin-top: 5px;
           let fullTranslation = "";
           for (const trans of translations) {
             const parts = trans.split("<|>");
-            fullTranslation += (parts[2] || trans) + "\n";
+            fullTranslation += (parts[2] || trans.replace("<|>", "")) + "\n";
           }
           this.setEditorContent(editor, fullTranslation);
         }
@@ -5930,9 +5809,7 @@ margin-top: 5px;
         }
         if (!silent) this.translator.ui.updateProcessingStatus(this._("notifications.detecting_text"), 40);
         const prompt = prompts ? prompts : this.translator.createPrompt("ocr", "ocr");
-        console.log('prompt: ', prompt);
         const content = await this.translator.fileProcess.processFile(file, prompt);
-        if (this.translator.userSettings.settings.apiProvider === 'puter') return content;
         const result = await this.translator.api.request(content.content, 'ocr', content.key);
         if (cacheKey && this.translator.imageCache && settings.cacheOptions.image.enabled) {
           await this.translator.imageCache.set(cacheKey, result);
@@ -6051,7 +5928,6 @@ margin-top: 5px;
         const prompt = this.translator.createPrompt("media", "media");
         console.log('prompt: ', prompt);
         const content = await this.translator.fileProcess.processFile(file, prompt);
-        if (this.translator.userSettings.settings.apiProvider === 'puter') return content;
         this.translator.ui.updateProcessingStatus(this._("notifications.translating"), 60);
         const result = await this.translator.api.request(content.content, 'media', content.key);
         this.translator.ui.updateProcessingStatus(this._("notifications.finalizing"), 80);
@@ -6576,11 +6452,11 @@ margin-top: 5px;
 - Do NOT add, merge, or skip any objects. The output array should ideally have the same number of objects as the input.
 - Do NOT add any extra text, comments, or markdown formatting (DO NOT like \`\`\`json). The output must be raw, valid JSON.
 - CRITICAL: Properly escape all special characters within the "translation" strings, especially double quotes (").
-Input JSON:
+\nInput JSON:
 \`\`\`
 ${chunkJSON}
 \`\`\`
-Expected Output JSON format:
+\nExpected Output JSON format:
 [
   { "id": 0, "translation": "Translated text for object with id 0..." },
   { "id": 1, "translation": "Translated text for object with id 1..." },
@@ -6653,11 +6529,11 @@ Expected Output JSON format:
 - Do NOT add, merge, or skip any objects. The output array should ideally have the same number of objects as the input.
 - Do NOT add any extra text, comments, or markdown formatting (DO NOT like \`\`\`json). The output must be raw, valid JSON.
 - CRITICAL: Properly escape all special characters within the "translation" strings, especially double quotes (").
-Input JSON:
+\nInput JSON:
 \`\`\`
 ${chunkJSON}
 \`\`\`
-Expected Output JSON format:
+\nExpected Output JSON format:
 [
   { "id": 0, "translation": "Translated text for object with id 0..." },
   { "id": 1, "translation": "Translated text for object with id 1..." },
@@ -7134,21 +7010,48 @@ ${text}
       this.sentinelContainer = null;
       this.allTextNodes = [];
     }
+    parseFaultyJSON(jsonString) {
+      let cleanString = jsonString.trim();
+      const markdownMatch = cleanString.match(/```json\s*([\s\S]*?)\s*```/);
+      if (markdownMatch && markdownMatch[1]) {
+        cleanString = markdownMatch[1].trim();
+      }
+      try {
+        const parsed = JSON.parse(cleanString);
+        if (Array.isArray(parsed)) {
+          return parsed;
+        }
+      } catch (e) {
+        console.warn("Could not parse the whole JSON string, attempting to parse line by line.", e.message);
+      }
+      const objects = [];
+      const lines = cleanString.split('\n');
+      let currentObjectStr = '';
+      lines.forEach(line => {
+        currentObjectStr += line;
+        try {
+          if (line.trim().endsWith('},') || line.trim().endsWith('}')) {
+            const objectToParse = currentObjectStr.trim().endsWith(',')
+              ? currentObjectStr.trim().slice(0, -1)
+              : currentObjectStr.trim();
+            const parsed = JSON.parse(objectToParse);
+            if (typeof parsed.id === 'number' && (parsed.translation || parsed.vi)) {
+              objects.push(parsed);
+            }
+            currentObjectStr = '';
+          }
+        } catch (e) {
+        }
+      });
+      return objects;
+    }
     async translatePage() {
       try {
         if (this.isTranslated) {
-          if (this.pageObserver) {
-            this.pageObserver.disconnect();
-            this.pageObserver = null;
-          }
-          if (this.sentinelContainer) {
-            this.sentinelContainer.remove();
-            this.sentinelContainer = null;
-          }
-          if (this.domObserver) {
-            this.domObserver.disconnect();
-            this.domObserver = null;
-          }
+          if (this.pageObserver) this.pageObserver.disconnect();
+          if (this.sentinelContainer) this.sentinelContainer.remove();
+          if (this.domObserver) this.domObserver.disconnect();
+          this.pageObserver = this.sentinelContainer = this.domObserver = null;
           await Promise.all(
             Array.from(this.originalTexts.entries()).map(async ([node, originalText]) => {
               if (node && (node.parentNode || document.contains(node))) {
@@ -7174,10 +7077,11 @@ ${text}
         }
         this.translator.ui.showNotification(this._("notifications.page_translate_loading"), "info");
         const pageHeight = document.documentElement.scrollHeight;
-        const NUM_SECTIONS = Math.max(10, Math.min(50, Math.floor(pageHeight / 800))); // Chia trang thành các khu vực cao 800px
+        const NUM_SECTIONS = Math.max(10, Math.min(50, Math.floor(pageHeight / 800)));
         const sectionHeight = pageHeight / NUM_SECTIONS;
+        if (this.sentinelContainer) this.sentinelContainer.remove();
         this.sentinelContainer = document.createElement('div');
-        this.sentinelContainer.style.cssText = 'position: absolute; top: 0; left: 0; width: 1px; height: 100%; pointer-events: none;';
+        this.sentinelContainer.style.cssText = 'position: absolute; top: 0; left: 0; width: 1px; height: 100%; pointer-events: none; z-index: -1;';
         document.body.appendChild(this.sentinelContainer);
         const sentinels = [];
         for (let i = 0; i < NUM_SECTIONS; i++) {
@@ -7187,42 +7091,60 @@ ${text}
           this.sentinelContainer.appendChild(sentinel);
           sentinels.push(sentinel);
         }
-        let translatedSections = 0;
+        let translatedSections = new Set();
+        const translateRemainingNodes = async () => {
+          if (this.pageObserver) {
+            this.pageObserver.disconnect();
+            this.pageObserver = null;
+          }
+          const remainingNodes = this.allTextNodes.filter(node => !this.originalTexts.has(node));
+          if (remainingNodes.length > 0) {
+            console.log(`[Final Sweep] Found ${remainingNodes.length} remaining text nodes to translate.`);
+            const chunks = this.createChunks(remainingNodes, 2000);
+            await Promise.all(chunks.map(chunk => this.translateChunkWithRetries(chunk)))
+              .catch(err => console.error("Error during final sweep translation:", err));
+          }
+          this.translator.ui.showNotification(this._("notifications.page_translated_success"), "success");
+          if (!this.domObserver) {
+            this.setupDOMObserver();
+          }
+        };
         this.pageObserver = new IntersectionObserver(
-          (entries, observer) => {
+          (entries) => {
+            let needsFinalSweep = false;
             for (const entry of entries) {
               if (entry.isIntersecting) {
                 const sentinel = entry.target;
-                observer.unobserve(sentinel);
                 const sectionIndex = parseInt(sentinel.dataset.sectionIndex, 10);
+                if (translatedSections.has(sectionIndex)) continue;
+                this.pageObserver.unobserve(sentinel);
+                translatedSections.add(sectionIndex);
                 const startY = sectionIndex * sectionHeight;
-                const endY = startY + sectionHeight;
+                const isLastSection = sectionIndex === NUM_SECTIONS - 1;
+                const endY = isLastSection ? Infinity : startY + sectionHeight;
                 const nodesForThisSection = this.allTextNodes.filter(node => {
-                  const parent = node.parentElement;
-                  if (!parent) return false;
-                  const rect = parent.getBoundingClientRect();
+                  if (!node.parentElement || this.originalTexts.has(node)) return false;
+                  const rect = node.parentElement.getBoundingClientRect();
                   const nodeY = rect.top + window.scrollY;
-                  return nodeY >= startY && nodeY < endY && !this.originalTexts.has(node);
+                  return nodeY >= startY && nodeY < endY;
                 });
                 if (nodesForThisSection.length > 0) {
                   const chunks = this.createChunks(nodesForThisSection, 2000);
                   Promise.all(chunks.map(chunk => this.translateChunkWithRetries(chunk)))
                     .catch(err => console.error("Error translating chunk in observer:", err));
                 }
-                translatedSections++;
-                if (translatedSections >= NUM_SECTIONS) {
-                  this.translator.ui.showNotification(this._("notifications.page_translated_success"), "success");
-                  if (!this.domObserver) {
-                    this.setupDOMObserver();
-                  }
-                }
+              }
+              if (translatedSections.size >= NUM_SECTIONS) {
+                needsFinalSweep = true;
               }
             }
+            if (needsFinalSweep) {
+              translateRemainingNodes();
+            }
           }, {
-          rootMargin: "100% 0px",
+          rootMargin: "120% 0px",
           threshold: 0.01,
-        }
-        );
+        });
         sentinels.forEach(s => this.pageObserver.observe(s));
         this.isTranslated = true;
         return { success: true, message: this._("notifications.translating") };
@@ -7467,52 +7389,119 @@ ${text}
       }
       return finalChunks;
     }
-    async translateChunkWithRetries(chunk, maxRetries = 5, initialDelay = 1000) {
-      for (let attempt = 1; attempt <= maxRetries; attempt++) {
-        try {
-          chunk.forEach(node => {
-            if (!this.originalTexts.has(node)) {
-              this.originalTexts.set(node, node.textContent);
-            }
-          });
-          const textsToTranslate = chunk
-            .map(node => this.originalTexts.get(node).trim())
-            .filter(text => text.length > 0)
-            .join(' <-> ');
-          if (!textsToTranslate) return { success: true, nodes: chunk };
-          const prompt = this.translator.createPrompt(textsToTranslate, "page");
-          console.log('prompt: ', prompt);
-          const translatedText = await this.translator.api.request(prompt, 'page');
-          if (!translatedText) {
-            throw new Error("API returned empty response for chunk.");
-          }
-          const translations = translatedText.split('<->');
-          await Promise.all(
-            chunk.map(async (node, index) => {
-              if (index >= translations.length) return;
-              const originalText = this.originalTexts.get(node)?.trim();
-              if (originalText && node.parentNode && document.contains(node)) {
-                const translated = translations[index];
-                const mode = this.settings.displayOptions.translationMode;
-                let output = this.formatTranslation(
-                  originalText,
-                  translated,
-                  mode,
-                  this.settings.displayOptions
-                );
-                await this.updateNode(node, output);
+    async translateChunkWithRetries(chunk, maxRetries = 5, initialDelay = 1500) {
+      const nodesToTranslate = chunk.filter(node => node.textContent.trim().length > 0);
+      if (nodesToTranslate.length === 0) {
+        return { success: true, nodes: chunk };
+      }
+      const settings = this.translator.userSettings.settings;
+      const isPinyinMode = settings.displayOptions.translationMode !== "translation_only";
+      const textsToTranslate = nodesToTranslate.map((node, index) => {
+        if (!this.originalTexts.has(node)) {
+          this.originalTexts.set(node, node.textContent);
+        }
+        return {
+          id: index,
+          text: this.originalTexts.get(node).trim()
+        };
+      });
+      const jsonPayload = JSON.stringify(textsToTranslate, null, 2);
+      if (isPinyinMode) {
+        const batchPrompt = this.translator.createPrompt(jsonPayload, "page", "", true);
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+          try {
+            const rawResponse = await this.translator.api.request(batchPrompt, 'page');
+            const translatedData = this.parseFaultyJSON(rawResponse);
+            if (Array.isArray(translatedData)) {
+              const translationsMap = new Map(translatedData.map(item => [item.id, item]));
+              const missingItems = [];
+              nodesToTranslate.forEach((node, index) => {
+                if (translationsMap.has(index)) {
+                  const result = translationsMap.get(index);
+                  const formattedText = `${result.original || textsToTranslate[index].text} <|> ${result.ipa} <|> ${result.translation}`;
+                  const output = this.translator.page.formatTranslation(result.original, formattedText, settings.displayOptions.translationMode, settings.displayOptions);
+                  if (node.parentNode && document.contains(node)) {
+                    this.updateNode(node, output);
+                  }
+                } else {
+                  missingItems.push({ node, index });
+                }
+              });
+              if (missingItems.length > 0) {
+                console.warn(`[Pinyin Mode] Batch translation missed ${missingItems.length} items. Initiating fallback...`);
+                const fallbackPromises = missingItems.map(async (item) => {
+                  try {
+                    const originalText = this.originalTexts.get(item.node).trim();
+                    const fallbackPrompt = this.translator.createPrompt(originalText, "page_fallback", "", true);
+                    const individualResult = await this.translator.api.request(fallbackPrompt, 'page');
+                    if (individualResult && item.node.parentNode && document.contains(item.node)) {
+                      const output = this.translator.page.formatTranslation(originalText, individualResult, settings.displayOptions.translationMode, settings.displayOptions);
+                      await this.updateNode(item.node, output);
+                    }
+                  } catch (fallbackError) {
+                    console.error(`[Pinyin Mode] Fallback failed for item id ${item.index}:`, fallbackError);
+                  }
+                });
+                await Promise.allSettled(fallbackPromises);
               }
-            })
-          );
-          return { success: true, nodes: chunk };
-        } catch (error) {
-          console.warn(`Attempt ${attempt}/${maxRetries} for chunk failed:`, error.message);
-          if (attempt === maxRetries) {
-            console.error(`Chunk failed translation after ${maxRetries} attempts.`);
-            return { success: false, nodes: chunk, error };
+              return { success: true, nodes: chunk };
+            }
+            throw new Error("[Pinyin Mode] API response was not a valid JSON array.");
+          } catch (error) {
+            console.warn(`[Pinyin Mode] Attempt ${attempt}/${maxRetries} failed:`, error.message);
+            if (attempt === maxRetries) {
+              return { success: false, nodes: chunk, error };
+            }
+            await new Promise(resolve => setTimeout(resolve, initialDelay * Math.pow(2, attempt - 1)));
           }
-          const delay = initialDelay * Math.pow(2, attempt - 1);
-          await new Promise(resolve => setTimeout(resolve, delay));
+        }
+      } else {
+        const batchPrompt = this.translator.createPrompt(jsonPayload, "page");
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+          try {
+            const rawResponse = await this.translator.api.request(batchPrompt, 'page');
+            const translatedData = this.parseFaultyJSON(rawResponse);
+            if (Array.isArray(translatedData)) {
+              const translationsMap = new Map(translatedData.map(item => [item.id, item.translation]));
+              const missingItems = [];
+              nodesToTranslate.forEach((node, index) => {
+                if (translationsMap.has(index)) {
+                  const translated = translationsMap.get(index);
+                  const output = this.translator.page.formatTranslation(this.originalTexts.get(node), translated, settings.displayOptions.translationMode, settings.displayOptions);
+                  if (node.parentNode && document.contains(node)) {
+                    this.updateNode(node, output);
+                  }
+                } else {
+                  missingItems.push({ node, index });
+                }
+              });
+              if (missingItems.length > 0) {
+                console.warn(`[Normal Mode] Batch translation missed ${missingItems.length} items. Initiating fallback...`);
+                const fallbackPromises = missingItems.map(async (item) => {
+                  try {
+                    const originalText = this.originalTexts.get(item.node).trim();
+                    const fallbackPrompt = this.translator.createPrompt(originalText, "page_fallback");
+                    const individualResult = await this.translator.api.request(fallbackPrompt, 'page');
+                    if (individualResult && item.node.parentNode && document.contains(item.node)) {
+                      const output = this.translator.page.formatTranslation(originalText, individualResult, settings.displayOptions.translationMode, settings.displayOptions);
+                      await this.updateNode(item.node, output);
+                    }
+                  } catch (fallbackError) {
+                    console.error(`[Normal Mode] Fallback failed for item id ${item.index}:`, fallbackError);
+                  }
+                });
+                await Promise.allSettled(fallbackPromises);
+              }
+              return { success: true, nodes: chunk };
+            }
+            throw new Error("[Normal Mode] API response was not a valid JSON array.");
+          } catch (error) {
+            console.warn(`[Normal Mode] Attempt ${attempt}/${maxRetries} failed:`, error.message);
+            if (attempt === maxRetries) {
+              return { success: false, nodes: chunk, error };
+            }
+            await new Promise(resolve => setTimeout(resolve, initialDelay * Math.pow(2, attempt - 1)));
+          }
         }
       }
     }
@@ -8044,11 +8033,38 @@ ${text}
       if (storedData) {
         try {
           const parsed = JSON.parse(storedData);
-          this.cache = new Map(Object.entries(parsed.cache || {}));
-          this.accessOrder = parsed.accessOrder || [];
-          console.log(`Cache "${this.storageKey}" loaded with ${this.cache.size} items.`);
+          const oldCache = new Map(Object.entries(parsed.cache || {}));
+          const oldAccessOrder = parsed.accessOrder || [];
+          const newCache = new Map();
+          const newAccessOrder = [];
+          const now = Date.now();
+          let itemsPurged = false;
+          for (const key of oldAccessOrder) {
+            const compressedData = oldCache.get(key);
+            if (compressedData) {
+              try {
+                const data = JSON.parse(LZString.decompressFromUTF16(compressedData));
+                if (now - data.timestamp <= this.expirationTime) {
+                  newCache.set(key, compressedData);
+                  newAccessOrder.push(key);
+                } else {
+                  itemsPurged = true;
+                }
+              } catch (e) {
+                itemsPurged = true;
+                console.warn(`Could not decompress cache item for key "${key}", removing it.`);
+              }
+            }
+          }
+          this.cache = newCache;
+          this.accessOrder = newAccessOrder;
+          if (itemsPurged) {
+            console.log(`Cache "${this.storageKey}": Purged expired items.`);
+            await this._saveToStorage();
+          }
+          console.log(`Cache "${this.storageKey}" loaded with ${this.cache.size} valid items.`);
         } catch (e) {
-          console.error(`Failed to load cache "${this.storageKey}":`, e);
+          console.error(`Failed to load or clean cache "${this.storageKey}":`, e);
           this.cache = new Map();
           this.accessOrder = [];
         }
@@ -8070,7 +8086,9 @@ ${text}
       } else {
         if (this.cache.size >= this.maxSize) {
           const oldestKey = this.accessOrder.shift();
-          this.cache.delete(oldestKey);
+          if (oldestKey) {
+            this.cache.delete(oldestKey);
+          }
         }
       }
       this.accessOrder.push(key);
@@ -8085,7 +8103,17 @@ ${text}
       if (!this.isInitialized) await this.init();
       const compressedData = this.cache.get(key);
       if (!compressedData) return null;
-      const data = JSON.parse(LZString.decompressFromUTF16(compressedData));
+      let data;
+      try {
+        data = JSON.parse(LZString.decompressFromUTF16(compressedData));
+      } catch (e) {
+        console.warn(`Could not decompress cache item for key "${key}", removing it.`);
+        this.cache.delete(key);
+        const index = this.accessOrder.indexOf(key);
+        if (index > -1) this.accessOrder.splice(index, 1);
+        await this._saveToStorage();
+        return null;
+      }
       if (Date.now() - data.timestamp > this.expirationTime) {
         this.cache.delete(key);
         const index = this.accessOrder.indexOf(key);
@@ -8294,18 +8322,13 @@ ${text}
             mimeType = mimeMap[ext] || 'application/octet-stream';
           }
         }
-        if (apiProvider === 'puter') {
-          const result = await apiConfig.vision(prompt, url, false, { model: this.translator.api.getModel() });
-          return apiConfig.responseParser(result);
-        } else {
-          this.translator.ui.showProcessingStatus(this._("notifications.processing_url"));
-          try {
-            actualFile = await this.fetchUrlAsFile(url, mimeType, filename);
-          } catch (fetchError) {
-            throw new Error(`${this._("notifications.failed_read_file")}: ${fetchError.message}`);
-          } finally {
-            setTimeout(() => this.translator.ui.removeProcessingStatus(), 1000);
-          }
+        this.translator.ui.showProcessingStatus(this._("notifications.processing_url"));
+        try {
+          actualFile = await this.fetchUrlAsFile(url, mimeType, filename);
+        } catch (fetchError) {
+          throw new Error(`${this._("notifications.failed_read_file")}: ${fetchError.message}`);
+        } finally {
+          setTimeout(() => this.translator.ui.removeProcessingStatus(), 1000);
         }
       } else {
         actualFile = fileOrUrl;
@@ -8406,21 +8429,131 @@ ${text}
         throw new Error(this._("notifications.json_processing_error"));
       }
     }
+    parseFaultyJSON(jsonString) {
+      let cleanString = jsonString.trim();
+      const markdownMatch = cleanString.match(/```json\s*([\s\S]*?)\s*```/);
+      if (markdownMatch && markdownMatch[1]) {
+        cleanString = markdownMatch[1].trim();
+      }
+      try {
+        const parsed = JSON.parse(cleanString);
+        if (Array.isArray(parsed)) {
+          return parsed;
+        }
+      } catch (e) {
+        console.warn("Could not parse the whole JSON string, attempting to parse line by line.", e.message);
+      }
+      const objects = [];
+      const lines = cleanString.split('\n');
+      let currentObjectStr = '';
+      lines.forEach(line => {
+        currentObjectStr += line;
+        try {
+          if (line.trim().endsWith('},') || line.trim().endsWith('}')) {
+            const objectToParse = currentObjectStr.trim().endsWith(',')
+              ? currentObjectStr.trim().slice(0, -1)
+              : currentObjectStr.trim();
+            const parsed = JSON.parse(objectToParse);
+            if (typeof parsed.id === 'number' && (parsed.translation || parsed.text)) {
+              objects.push(parsed);
+            }
+            currentObjectStr = '';
+          }
+        } catch (e) {
+        }
+      });
+      if (objects.length > 0) {
+        console.warn("Fallback JSON parsing succeeded with", objects.length, "objects.");
+        return objects;
+      }
+      throw new Error(this._("notifications.response_parse_error"));
+    }
     async processSubtitle(content) {
       try {
-        const parts = content.split('\n\n');
-        const translated = [];
-        for (const part of parts) {
-          const lines = part.split('\n');
-          if (lines.length >= 3) {
-            const [index, timing, ...text] = lines;
-            const translatedText = await this.translator.translate(text.join(' '));
-            translated.push([index, timing, translatedText].join('\n'));
+        const settings = this.translator.userSettings.settings;
+        const displayMode = settings.displayOptions.translationMode;
+        const showSource = displayMode === 'language_learning' && settings.displayOptions.languageLearning.showSource;
+        const srtBlocks = content.split(/\r?\n\r?\n/).map((part, originalIndex) => {
+          if (part.trim() === '') return null;
+          const lines = part.split(/\r?\n/);
+          if (lines.length < 2) return null;
+          const index = lines[0];
+          const timing = lines[1];
+          const originalText = lines.slice(2).join('\n');
+          if (!/^\d+$/.test(index.trim()) || !timing.includes('-->')) {
+            return null;
           }
+          return { originalIndex, index, timing, originalText };
+        }).filter(Boolean);
+        if (srtBlocks.length === 0) return content;
+        const CHUNK_SIZE = 100;
+        const chunks = [];
+        for (let i = 0; i < srtBlocks.length; i += CHUNK_SIZE) {
+          chunks.push(srtBlocks.slice(i, i + CHUNK_SIZE));
         }
-        return translated.join('\n\n');
+        const allTranslatedTexts = new Map();
+        const docTitle = document.title ? `từ video có tiêu đề "${document.title}"` : '';
+        const targetLang = settings.displayOptions.targetLanguage;
+        await Promise.all(chunks.map(async (chunk) => {
+          const linesToTranslate = chunk.filter(block => block.originalText.trim() !== '');
+          if (linesToTranslate.length === 0) return;
+          const jsonPayload = linesToTranslate.map(block => ({
+            id: block.originalIndex,
+            text: block.originalText,
+          }));
+          const prompt = `You are an expert subtitle translator. Your task is to translate the 'text' field for each object in the following JSON array to '${targetLang}'.
+- Target language: '${targetLang}'.
+- Use the context of ${docTitle} to determine the translation style.
+- The translation must strictly adhere to the context and tone of the original text.
+- Ensure fluency and naturalness as a native speaker would.
+- Do not add any explanations or interpretations beyond the translation.
+- Preserve terminology and proper nouns on a 1:1 basis.
+- You MUST return a valid JSON array.
+- For EACH object you translate, you MUST include the original 'id' from the input.
+- Each object in the output array must contain exactly two fields: "id" (the original integer ID) and "translation" (the translated text).
+- Do NOT add, merge, or skip any objects. The output array should ideally have the same number of objects as the input.
+- Do NOT add any extra text, comments, or markdown formatting (DO NOT like \`\`\`json). The output must be raw, valid JSON.
+- CRITICAL: Properly escape all special characters within the "translation" strings, especially double quotes (").
+\nInput JSON:
+\`\`\`
+${JSON.stringify(jsonPayload, null, 2)}
+\`\`\`
+\nExpected Output JSON format:
+[
+  { "id": 0, "translation": "Translated text for object with id 0..." },
+  { "id": 1, "translation": "Translated text for object with id 1..." },
+  ...
+]
+`;
+          const rawResponse = await this.translator.api.request(prompt, 'page');
+          if (!rawResponse) return;
+          const translatedData = this.parseFaultyJSON(rawResponse);
+          if (Array.isArray(translatedData)) {
+            translatedData.forEach(item => {
+              const translation = item.translation || item.text;
+              if (typeof item.id !== 'undefined' && translation) {
+                allTranslatedTexts.set(item.id, translation);
+              }
+            });
+          }
+        }));
+        const finalSrtParts = srtBlocks.map(block => {
+          const translatedText = allTranslatedTexts.get(block.originalIndex);
+          if (!translatedText || block.originalText.trim() === '') {
+            return `${block.index}\n${block.timing}\n${block.originalText}`;
+          }
+          let finalSubtitleText;
+          if (displayMode === 'parallel' || (displayMode === 'language_learning' && showSource)) {
+            finalSubtitleText = `${block.originalText}\n${translatedText}`;
+          } else {
+            finalSubtitleText = translatedText;
+          }
+          return `${block.index}\n${block.timing}\n${finalSubtitleText}`;
+        });
+        return finalSrtParts.join('\n\n');
       } catch (error) {
-        throw new Error(this._("notifications.subtitle_processing_error"));
+        console.error("Subtitle processing error:", error);
+        throw new Error(this._("notifications.subtitle_processing_error") + `: ${error.message}`);
       }
     }
     async translateObject(obj) {
@@ -11747,17 +11880,6 @@ img:hover, canvas:hover {
           e.preventDefault();
           e.stopPropagation();
           try {
-            const settings = this.settings;
-            if (settings.apiProvider === "puter") {
-              const prompt = this.translator.createPrompt("ocr", "ocr");
-              console.log('prompt: ', prompt);
-              const ocrResult = CONFIG.API.providers.puter.vision(prompt, e.target.src, false, {
-                model: this.translator.api.getModel(),
-              });
-              const result = CONFIG.API.providers.puter.responseParser(ocrResult);
-              this.translator.ui.updateProcessingStatus(this._("notifications.completed"), 100);
-              this.formatTrans(result);
-            }
             this.showTranslatingStatus();
             const targetElement = e.target;
             const canvas = document.createElement("canvas");
@@ -11824,7 +11946,7 @@ img:hover, canvas:hover {
           const parts = trans.split("<|>");
           text += (parts[0] || "") + "\n";
           pinyin += (parts[1] || "") + "\n";
-          fullTranslation += (parts[2] || trans) + "\n";
+          fullTranslation += (parts[2] || trans.replace("<|>", "")) + "\n";
         }
         this.displayPopup(
           fullTranslation,
@@ -12254,6 +12376,9 @@ img:hover, canvas:hover {
   z-index: 2147483647;
   pointer-events: none;
 }
+.translating-done {
+  background-color: transparent;
+}
 .translator-guide {
   position: fixed;
   top: 20px;
@@ -12384,9 +12509,6 @@ img:hover, canvas:hover {
 }
 .manga-translation-overlay .resize-handle:hover {
   background-color: rgba(74, 144, 226, 0.3);
-}
-.translating-done {
-  background-color: transparent;
 }
 `;
       this.shadowRoot.appendChild(style);
@@ -12612,7 +12734,7 @@ pointer-events: none;
         if (guideElement) guideElement.remove();
         return;
       }
-      const BATCH_SIZE = 10;
+      const BATCH_SIZE = 3;
       const translationState = new Set();
       let translatedCount = 0;
       const totalImages = filteredImages.length;
@@ -12662,7 +12784,7 @@ pointer-events: none;
           }
         }
       }, {
-        rootMargin: '100% 0%',
+        rootMargin: '120% 0%',
         threshold: 0.01
       });
       filteredImages.forEach(img => intersectionObserver.observe(img));
@@ -12935,9 +13057,9 @@ pointer-events: none;
     - Keep sentence meanings unchanged
     - Use appropriate slang or common phrases when needed
     - Ensure correct spelling and grammar
-    - Add necessary language particles for '${targetLanguage}'
+    - Add necessary language particles for '${targetLanguage}' when needed
     - Use contextually appropriate pronouns
-    - For adult content style reference: [truyensex.moe, truyensexvn.org, truyensex.vip, truyensextv69.com]
+    - For adult content style reference: [ truyensex.moe, truyensexvn.org, truyensex.vip, truyensextv69.com ]
   Special handling for Vietnamese translations:
     - Keep Sino-Vietnamese forms for proper names/locations (e.g. "Diệp Trần, Long kiếm, Thiên kiếp")
     - Avoid direct translations (e.g. NOT "Lá Trần, Rồng kiếm, Trời kiếp")
@@ -12960,7 +13082,8 @@ pointer-events: none;
   - container_shape: round/square/jagged/custom
   - font_size: small/medium/large
   - layout_direction: horizontal/vertical/custom
-Return JSON object with this structure:
+  - text_style: "regular"
+\nReturn JSON object with this structure:
 {
   "regions": [{
     "text": "original text",
@@ -12983,13 +13106,17 @@ Return JSON object with this structure:
       "text_style": "regular"
     }
   }]
-}`;
+}
+\nCRITICAL: The final output MUST be a single, valid JSON object. Ensure all strings within the JSON are properly escaped. Do not add any text, comments, or markdown formatting (DO NOT like \`\`\`json) before or after the JSON.
+`;
         const response = await this.ocr.processImage(file, prompt, silent);
         console.log("response: ", response);
         if (response) {
           const jsonMatch = response.match(/\{[\s\S]*\}/);
           if (jsonMatch) {
-            const parsedJson = JSON.parse(jsonMatch[0]);
+            let jsonString = jsonMatch[0];
+            const sanitizedJsonString = jsonString.replace(/\\(?!["\\/bfnrt]|u[0-9a-fA-F]{4})/g, '\\\\');
+            const parsedJson = JSON.parse(sanitizedJsonString);
             if (parsedJson && parsedJson.regions) {
               const processOverlappingRegions = (regions) => {
                 const result = [];
@@ -13648,7 +13775,7 @@ Return JSON object with this structure:
               for (const trans of translations) {
                 const parts = trans.split("<|>");
                 pinyin += (parts[1] || "") + "\n";
-                fullTranslation += (parts[2] || trans) + "\n";
+                fullTranslation += (parts[2] || trans.replace("<|>", "")) + "\n";
               }
               this.ui.displayPopup(
                 fullTranslation,
@@ -13762,7 +13889,7 @@ Return JSON object with this structure:
   - Kiểm tra chính tả và ngữ pháp trong bản dịch.
   - Thêm các trợ từ ngôn ngữ có mã ngôn ngữ là '${targetLanguage}' khi cần để câu văn hoàn chỉnh hơn.
   - Sử dụng đại từ nhân xưng ngôn ngữ có mã ngôn ngữ là '${targetLanguage}' tự nhiên và hợp ngữ cảnh.
-  - Tham khảo các trang web sau để lấy văn phong phù hợp cho các đoạn truyện liên quan đến sex: [truyensex.moe, truyensexvn.org, truyensex.vip, truyensextv69.com].
+  - Tham khảo các trang web sau để lấy văn phong phù hợp cho các đoạn truyện liên quan đến sex: [ truyensex.moe, truyensexvn.org, truyensex.vip, truyensextv69.com ].
 `;
       const share_normal = `Bạn là người dịch thuật chuyên nghiệp, chuyên tạo bản dịch chính xác và tự nhiên. Hãy dịch văn bản cần xử lý ${docTitle} sang ngôn ngữ có mã ngôn ngữ là '${targetLanguage}' với các yêu cầu sau:
   - Ngôn ngữ đích: '${targetLanguage}'.
@@ -13815,9 +13942,34 @@ Lưu ý:
   - Bản dịch phải hoàn toàn là ngôn ngữ có mã ngôn ngữ là '${targetLanguage}', nhưng ví dụ khi dịch sang tiếng Việt nếu gặp những danh từ riêng chỉ địa điểm hoặc tên riêng, có phạm trù trong ngôn ngữ là từ ghép của 2 ngôn ngữ gọi là từ Hán Việt, hãy dịch sang nghĩa từ Hán Việt như Diệp Trần, Lục Thiếu Du, Long kiếm, Thiên kiếp, núi Long Sĩ Đầu, ngõ Nê Bình, Thiên Kiếm môn,... thì sẽ hay hơn là dịch hẳn sang nghĩa tiếng Việt là Lá Trần, Rồng kiếm, Trời kiếp, núi Rồng Ngẩng Đầu,..
   - Định dạng bản dịch của bạn theo định dạng SRT và đảm bảo rằng mỗi đoạn hội thoại có ít nhất 4 dòng bao gồm dòng được đánh số thứ tự, dòng có thời gian bắt đầu và kết thúc rõ ràng, dòng nội dung bản dịch và dòng trống để tách các phần số thứ tự hội thoại ở trên.
   - Chỉ trả về bản dịch, không giải thích.`,
-        page: `${share_normal}
-${note_normal}
-  - Nếu có <-> làm phân cách giữa các văn bản thì hãy chỉ dịch văn bản giữa <-> và không thay đổi vị trí sự phân cách của <-> ở bản dịch trả về.
+        page: `Bạn là một người dịch thuật chuyên nghiệp, chuyên xử lý các đoạn văn bản HTML. Bạn sẽ nhận được một chuỗi JSON chứa một mảng các đối tượng, mỗi đối tượng có "id" (chỉ số) và "text" (nội dung cần dịch).\n
+Nhiệm vụ của bạn là dịch trường "text" của MỖI đối tượng sang ngôn ngữ có mã là '${targetLanguage}'.\n
+Các quy tắc BẮT BUỘC:
+1.  **Định dạng đầu ra:** Phản hồi của bạn PHẢI là một chuỗi JSON hợp lệ DUY NHẤT, chứa một mảng các đối tượng.
+2.  **Cấu trúc đối tượng:** Mỗi đối tượng trong mảng trả về PHẢI chứa hai trường: "id" (số nguyên, giữ nguyên từ đầu vào) và "translation" (chuỗi, là văn bản đã dịch).
+3.  **Toàn vẹn dữ liệu:** KHÔNG được bỏ sót, gộp hoặc thay đổi thứ tự bất kỳ "id" nào từ đầu vào. Số lượng đối tượng trong mảng đầu ra PHẢI bằng số lượng đối tượng trong mảng đầu vào.
+4.  **Không có nội dung thừa:** Phản hồi của bạn KHÔNG được chứa bất kỳ văn bản, giải thích, ghi chú, hay định dạng markdown nào (như \`\`\`json) bên ngoài chuỗi JSON.\n
+Yêu cầu về chất lượng dịch thuật:
+-   Ngôn ngữ đích: '${targetLanguage}'.
+-   Sử dụng văn phong tự nhiên, phù hợp với ngữ cảnh của trang web có tiêu đề ${docTitle}.
+-   Đối với tiếng Việt, giữ nguyên các danh từ riêng, tên Hán Việt (ví dụ: Diệp Trần, Thiên Kiếm môn) thay vì dịch thuần Việt (Lá Trần, Cổng Gươm Trời).
+\nVí dụ đầu vào:
+\`\`\`json
+[
+  {"id": 0, "text": "Hello world"},
+  {"id": 1, "text": "This is a test."}
+]
+\`\`\`
+\nVí dụ đầu ra mong muốn (dịch sang 'vi'):
+\`\`\`json
+[
+  {"id": 0, "translation": "Xin chào thế giới"},
+  {"id": 1, "translation": "Đây là một bài kiểm tra."}
+]
+\`\`\`
+\nBây giờ, hãy xử lý chuỗi JSON sau:
+${text}`,
+        page_fallback: `Vui lòng dịch đoạn văn bản sau sang ngôn ngữ có mã là '${targetLanguage}'. Chỉ trả về duy nhất bản dịch, không thêm bất kỳ giải thích hay định dạng nào khác.
 ${share_text}`,
         file_content: `Bạn là một trợ lý dịch thuật chuyên nghiệp. Hãy dịch nội dung của tệp này sang ngôn ngữ có mã là '${targetLanguage}'. Cung cấp bản dịch toàn diện và chính xác của toàn bộ tài liệu/nội dung phương tiện, bảo toàn mọi thông tin và cấu trúc quan trọng.
 Lưu ý:
@@ -13839,10 +13991,37 @@ Lưu ý:
   - Bản dịch phải hoàn toàn là ngôn ngữ có mã ngôn ngữ là '${targetLanguage}', nhưng ví dụ khi dịch sang tiếng Việt nếu gặp những danh từ riêng chỉ địa điểm hoặc tên riêng, có phạm trù trong ngôn ngữ là từ ghép của 2 ngôn ngữ gọi là từ Hán Việt, hãy dịch sang nghĩa từ Hán Việt như Diệp Trần, Lục Thiếu Du, Long kiếm, Thiên kiếp, núi Long Sĩ Đầu, ngõ Nê Bình, Thiên Kiếm môn,... thì sẽ hay hơn là dịch hẳn sang nghĩa tiếng Việt là Lá Trần, Rồng kiếm, Trời kiếp, núi Rồng Ngẩng Đầu,..
   - Định dạng bản dịch của bạn theo định dạng SRT và đảm bảo rằng mỗi đoạn hội thoại có ít nhất 4 dòng bao gồm dòng được đánh số thứ tự, dòng có thời gian bắt đầu và kết thúc rõ ràng, dòng nội dung bản dịch và dòng trống để tách các phần số thứ tự hội thoại ở trên.
   - Chỉ trả về bản dịch, không giải thích.`,
-        page: `${share_normal}
-${share_pinyin}
-${note_pinyin}
-  - Nếu có <-> làm phân cách giữa các văn bản thì hãy chỉ dịch văn bản giữa <-> và không thay đổi vị trí sự phân cách của <-> ở bản dịch trả về.
+        page: `Bạn là một người dịch thuật ngôn ngữ chuyên sâu. Bạn sẽ nhận được một chuỗi JSON chứa một mảng các đối tượng, mỗi đối tượng có "id" và "text".\n
+Nhiệm vụ của bạn là xử lý MỖI đối tượng và trả về: văn bản gốc, phiên âm IPA (hoặc Pinyin cho tiếng Trung), và bản dịch sang ngôn ngữ có mã là '${targetLanguage}'.\n
+Các quy tắc BẮT BUỘC:
+1.  **Định dạng đầu ra:** Phản hồi của bạn PHẢI là một chuỗi JSON hợp lệ DUY NHẤT, chứa một mảng các đối tượng.
+2.  **Cấu trúc đối tượng:** Mỗi đối tượng trong mảng trả về PHẢI chứa bốn trường: "id" (giữ nguyên), "original" (văn bản gốc), "ipa" (phiên âm), và "translation" (bản dịch).
+3.  **Toàn vẹn dữ liệu:** KHÔNG được bỏ sót, gộp hoặc thay đổi thứ tự bất kỳ "id" nào. Số lượng đối tượng trả về PHẢI bằng số lượng đối tượng đầu vào.
+4.  **Không có nội dung thừa:** Phản hồi của bạn KHÔNG được chứa bất kỳ văn bản, giải thích, hay định dạng markdown nào (như \`\`\`json) bên ngoài chuỗi JSON.
+5.  **Quy tắc phiên âm:**
+    -   Đối với tiếng Trung: "ipa" phải là Pinyin kèm dấu thanh (ví dụ: "Nǐ hǎo").
+    -   Đối với các ngôn ngữ khác: "ipa" phải là phiên âm IPA (ví dụ: "həˈloʊ").
+\nVí dụ đầu vào:
+\`\`\`json
+[
+  {"id": 0, "text": "Hello world"},
+  {"id": 1, "text": "你好"}
+]
+\`\`\`
+\nVí dụ đầu ra mong muốn (dịch sang 'vi'):
+\`\`\`json
+[
+  {"id": 0, "original": "Hello world", "ipa": "həˈloʊ wɜːrld", "translation": "Xin chào thế giới"},
+  {"id": 1, "original": "你好", "ipa": "Nǐ hǎo", "translation": "Xin chào"}
+]
+\`\`\`
+\nBây giờ, hãy xử lý chuỗi JSON sau:
+${text}`,
+        page_fallback: `Vui lòng cung cấp văn bản gốc, phiên âm, và bản dịch sang ngôn ngữ '${targetLanguage}' cho văn bản sau.
+- Đối với tiếng Trung, phiên âm là Pinyin có dấu.
+- Đối với các ngôn ngữ khác, phiên âm là IPA.
+- Trả lời theo định dạng nghiêm ngặt: Văn bản gốc <|> Phiên âm <|> Bản dịch
+- KHÔNG thêm bất kỳ giải thích nào.
 ${share_text}`,
         file_content: `Bạn là một trợ lý dịch thuật chuyên nghiệp. Hãy dịch nội dung của tệp này sang ngôn ngữ có mã là '${targetLanguage}'. Cung cấp bản dịch toàn diện và chính xác của toàn bộ tài liệu/nội dung phương tiện, bảo toàn mọi thông tin và cấu trúc quan trọng.
 Hãy trả về theo format sau, mỗi phần cách nhau bằng dấu <|> và không giải thích thêm:

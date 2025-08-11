@@ -4,7 +4,7 @@
 
 # King Translator AI - The All-in-One AI Translation Tool 🔥
 
-![Version](https://img.shields.io/badge/version-5.0-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-5.3-blue?style=for-the-badge)
 ![Status](https://img.shields.io/badge/status-active-green?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-GPL--3.0-orange?style=for-the-badge)
 [![Discord](https://img.shields.io/discord/1206126615848554526?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/8DTwr8QpsM)
@@ -32,10 +32,10 @@
 
 Version 5.0 is a major update focused on expanding capabilities, optimizing performance, and enhancing user experience:
 
-- 🧠 **Multi-AI Provider Support:** Integrates 6 leading AI providers: **Gemini, Claude, Perplexity, OpenAI, Mistral, and Puter**.
+- 🧠 **Multi-AI Provider Support:** Integrates 6 leading AI providers: **Gemini, Claude, Perplexity, OpenAI, Mistral, and Ollama**.
   - **Gemini:** Full support for all features, including large file translation.
   - **Claude, Perplexity, OpenAI, Mistral:** All features supported except file translation.
-  - **Puter:** Text-related features and YouTube live-caption translation.
+  - **Ollama:** Text-related features and YouTube live-caption translation.
 - 🗣️ **Versatile Text-to-Speech (TTS):** Adds 5 new TTS sources (Gemini, OpenAI, Google Cloud, Google Translate) alongside device TTS, with customizable voice, speed, and pitch.
 - 📂 **Advanced File & Media Translation:** Translate a wide range of local files and URLs. Supports documents (`PDF`, `DOCX`, `HTML`, `SRT`), media (`MP4`, `MP3`, `WAV`), and large files up to 2GB via the Gemini API.
 - 🚀 **API & Performance Optimization:** Improved API key management to minimize rate-limiting, resulting in faster and more stable page translations.
@@ -56,7 +56,7 @@ Version 5.0 is a major update focused on expanding capabilities, optimizing perf
 <details>
 <summary><b>🧠 Multi-AI Provider Translation</b></summary>
 
-- Flexibly choose from 6 leading AI providers: **Google Gemini, Anthropic Claude, Perplexity, OpenAI, Mistral, and Puter**.
+- Flexibly choose from 6 leading AI providers: **Google Gemini, Anthropic Claude, Perplexity, OpenAI, Mistral, and Ollama**.
 - Leverage the strengths of each model for different translation tasks.
 - Smart API key management with automatic rotation to optimize performance and avoid rate-limits.
 </details>
@@ -86,7 +86,7 @@ Version 5.0 is a major update focused on expanding capabilities, optimizing perf
 
 - **Audio/Video File Translation:** Upload media files (MP3, MP4, WAV, WEBM...) to get transcripts and translations.
 - **Large File Support (Gemini API):** Translate documents and media files up to 2GB.
-- **Direct URL Translation (Gemini/Puter):** Paste a file link to translate without downloading.
+- **Direct URL Translation (Gemini):** Paste a file link to translate without downloading.
 - **Document Translation:** Supports PDF, HTML, SRT, VTT, JSON, MD, and more.
 </details>
 
@@ -133,25 +133,24 @@ You need a userscript manager. **Violentmonkey** is highly recommended.
 - **Safari:** Use the [Tampermonkey](https://www.tampermonkey.net/index.php?browser=safari) or [Userscripts](https://apps.apple.com/us/app/userscripts/id1463298887) app.
 
 ### Step 2: Install the King Translator AI Script
-> **Important Note:** Due to new Greasy Fork policies, version 5.0 cannot be updated on their platform at this time. Please **install the latest version directly from GitHub** to get all new features and bug fixes.
 
 <p align="center">
-  <i>Install the latest version (v5.0) from GitHub:</i>
+  <i>Install the latest version from GitHub:</i>
   <br><br>
   <a href="https://raw.githubusercontent.com/king1x32/compiledUserscripts/release/release/KingTranslatorAI.user.js" style="text-decoration:none;">
-    <img src="https://img.shields.io/badge/Compressed_Version_(Recommended)-Fast_&_Light-blueviolet?style=for-the-badge&logo=github" alt="GitHub Compressed Version">
+    <img src="https://img.shields.io/badge/Compressed_Version-Fast_&_Light-blueviolet?style=for-the-badge&logo=github" alt="GitHub Compressed Version">
   </a>
      
-  <a href="https://raw.githubusercontent.com/king1x32/King-Translator-AI/refs/heads/main/King_Translator_AI.user.js" style="text-decoration:none;">
+  <a href="https://raw.githubusercontent.com/king1x32/King-Translator-AI/refs/heads/main/King-Translator-AI.user.js" style="text-decoration:none;">
     <img src="https://img.shields.io/badge/Normal_Version-Source_Code-blue?style=for-the-badge&logo=github" alt="GitHub Normal Version">
   </a>
 </p>
 
 <p align="center">
-  <i>Older, outdated version on GreasyFork (no longer updated):</i>
+  <i>Install the latest version from GreasyFork:</i>
   <br><br>
   <a href="https://greasyfork.org/en/scripts/529348-king-translator-ai" style="text-decoration:none;">
-    <img src="https://img.shields.io/badge/GreasyFork_(v4.x)-Outdated-gray?style=for-the-badge" alt="Greasy Fork">
+    <img src="https://img.shields.io/badge/GreasyFork-Source_Code-bluegray?style=for-the-badge" alt="Greasy Fork">
   </a>
 </p>
 
