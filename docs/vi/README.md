@@ -32,10 +32,10 @@
 
 Phiên bản 5.0 là một bản cập nhật lớn, tập trung vào việc mở rộng khả năng, tối ưu hóa hiệu suất và nâng cao trải nghiệm người dùng:
 
-- 🧠 **Hỗ Trợ Đa Nền Tảng AI:** Tích hợp 6 nhà cung cấp AI hàng đầu: **Gemini, Claude, Perplexity, OpenAI, Mistral, và Ollama**.
+- 🧠 **Hỗ Trợ Đa Nền Tảng AI:** Tích hợp 6 nhà cung cấp AI hàng đầu: **Gemini, Claude, Perplexity, OpenAI, Mistral, Deepseek và Ollama**.
   - **Gemini:** Hỗ trợ đầy đủ tất cả tính năng, bao gồm dịch file lớn.
   - **Claude, Perplexity, OpenAI, Mistral:** Hỗ trợ tất cả tính năng trừ dịch file.
-  - **Ollama:** Hỗ trợ các tính năng liên quan đến văn bản và dịch live-caption YouTube.
+  - **Deepseek, Ollama:** Hỗ trợ các tính năng liên quan đến văn bản và dịch live-caption YouTube.
 - 🗣️ **Text-to-Speech (TTS) Đa Dạng:** Thêm 5 nguồn TTS mới (Gemini, OpenAI, Google Cloud, Google Translate) cùng với TTS của thiết bị, với khả năng tùy chỉnh giọng nói, tốc độ, và cao độ.
 - 📂 **Dịch File & Media Nâng Cao:** Dịch nhiều định dạng file local và URL. Hỗ trợ tài liệu (`PDF`, `DOCX`, `HTML`, `SRT`), media (`MP4`, `MP3`, `WAV`), và file lớn lên đến 2GB qua API Gemini.
 - 🚀 **Tối Ưu Hóa API & Hiệu Suất:** Cải thiện cơ chế quản lý API key, giảm thiểu tình trạng rate-limit, dịch trang nhanh và ổn định hơn.
@@ -59,7 +59,7 @@ Phiên bản 5.0 là một bản cập nhật lớn, tập trung vào việc m�
 <details>
 <summary><b>🧠 Dịch Thuật Đa Nền Tảng AI</b></summary>
 
-- Lựa chọn linh hoạt giữa 6 nhà cung cấp AI hàng đầu: **Google Gemini, Anthropic Claude, Perplexity, OpenAI, Mistral, và Ollama**.
+- Lựa chọn linh hoạt giữa 6 nhà cung cấp AI hàng đầu: **Google Gemini, Anthropic Claude, Perplexity, OpenAI, Mistral, Deepseek và Ollama**.
 - Tận dụng điểm mạnh của từng mô hình cho các tác vụ dịch thuật khác nhau.
 - Quản lý API key thông minh, tự động xoay vòng để tối ưu hiệu suất và tránh rate-limit.
 </details>

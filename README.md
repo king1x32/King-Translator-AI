@@ -32,10 +32,10 @@
 
 Version 5.0 is a major update focused on expanding capabilities, optimizing performance, and enhancing user experience:
 
-- 🧠 **Multi-AI Provider Support:** Integrates 6 leading AI providers: **Gemini, Claude, Perplexity, OpenAI, Mistral, and Ollama**.
+- 🧠 **Multi-AI Provider Support:** Integrates 8 leading AI providers: **Gemini, Claude, Perplexity, OpenAI, Mistral, Deepseek and Ollama**.
   - **Gemini:** Full support for all features, including large file translation.
   - **Claude, Perplexity, OpenAI, Mistral:** All features supported except file translation.
-  - **Ollama:** Text-related features and YouTube live-caption translation.
+  - **Deepseek, Ollama:** Text-related features and YouTube live-caption translation.
 - 🗣️ **Versatile Text-to-Speech (TTS):** Adds 5 new TTS sources (Gemini, OpenAI, Google Cloud, Google Translate) alongside device TTS, with customizable voice, speed, and pitch.
 - 📂 **Advanced File & Media Translation:** Translate a wide range of local files and URLs. Supports documents (`PDF`, `DOCX`, `HTML`, `SRT`), media (`MP4`, `MP3`, `WAV`), and large files up to 2GB via the Gemini API.
 - 🚀 **API & Performance Optimization:** Improved API key management to minimize rate-limiting, resulting in faster and more stable page translations.
@@ -56,7 +56,7 @@ Version 5.0 is a major update focused on expanding capabilities, optimizing perf
 <details>
 <summary><b>🧠 Multi-AI Provider Translation</b></summary>
 
-- Flexibly choose from 6 leading AI providers: **Google Gemini, Anthropic Claude, Perplexity, OpenAI, Mistral, and Ollama**.
+- Flexibly choose from 8 leading AI providers: **Google Gemini, Anthropic Claude, Perplexity, OpenAI, Mistral, Deepseek and Ollama**.
 - Leverage the strengths of each model for different translation tasks.
 - Smart API key management with automatic rotation to optimize performance and avoid rate-limits.
 </details>
